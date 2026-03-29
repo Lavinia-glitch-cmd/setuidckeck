@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import json
+
+import numpy as np
 strace={}
 try:
     with open("sudo_date.txt") as f:
@@ -17,17 +19,21 @@ try:
             elif len(elemente) == 6:
                 pertime, sec, usec, calls,errors, syscallname = elemente
             
+
             else: 
                 continue
+            pertime=pertime.replace(',', '.')
+            sec=sec.replace(',', '.')
             strace[syscallname]={
-                'pertime': pertime,
-                'seconds': sec,
+                'pertime': float(pertime),
+                'seconds': float(sec),
                 'usecpertime': int(usec),
                 'calls': int(calls),
                 'errors': int(errors),
                 'syscallname': syscallname,
                 'syscallno': 0
             }
+
 except FileNotFoundError:
     print("file not found")
 except Exception as e:
@@ -43,7 +49,7 @@ try:
                 try:
                     sysno=int(elemente[0])
                     sysname=elemente[2]
-                    print(elemente[2])
+                    # print(elemente[2])
 
                     syscalls[sysname] ={
                         'syscallno': sysno, 
@@ -59,4 +65,13 @@ for name in syscalls:
         strace[name]['syscallno']=number
 
 # print(json.dumps(syscalls, indent=4))
-# print(json.dumps(strace, indent=3))
+print(json.dumps(strace, indent=3))
+
+for v in strace.values():
+    print(v)
+
+
+l=[ [v['pertime'] , v['seconds'] , v['usecpertime'],  v['calls'], v['errors'], v['syscallno']] for v in strace.values() ]
+m=np.array(l).reshape(-1,6)
+
+print(m)
