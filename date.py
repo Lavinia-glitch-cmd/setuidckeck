@@ -66,10 +66,8 @@ for name in syscalls:
 # print(json.dumps(syscalls, indent=4))
 print(json.dumps(strace, indent=3))
 
-
-
-
 d=[
+    ('syscallname', 'U40'),
     ('pertime', 'O'),
     ('seconds', 'O'),
     ('usecpertime', 'i4'),
@@ -78,7 +76,12 @@ d=[
     ('syscallno', 'i4')
 ]
 
-l=[ (v['pertime'] , v['seconds'] , v['usecpertime'],  v['calls'], v['errors'], v['syscallno']) for v in strace.values() ]
+# for k in strace.keys():
+#     print(k)
+
+l=[ (v['syscallname'], v['pertime'] , v['seconds'] , v['usecpertime'],  v['calls'], v['errors'], v['syscallno']) for k, v in strace.items() if k!='total' ]
+
+
 m=np.array(l, dtype=d).reshape(len(l),-1)
 
 print(m)
