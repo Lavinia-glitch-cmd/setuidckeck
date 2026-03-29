@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import json
-
 import numpy as np
 strace={}
 try:
@@ -12,7 +11,7 @@ try:
             if not linie or not linie[0].isdigit():
                 continue
             elemente = linie.split()
-            x=0
+            
             if len(elemente) == 5:
                 pertime, sec, usec, calls, syscallname = elemente
                 errors=0
@@ -67,11 +66,19 @@ for name in syscalls:
 # print(json.dumps(syscalls, indent=4))
 print(json.dumps(strace, indent=3))
 
-for v in strace.values():
-    print(v)
 
 
-l=[ [v['pertime'] , v['seconds'] , v['usecpertime'],  v['calls'], v['errors'], v['syscallno']] for v in strace.values() ]
-m=np.array(l).reshape(-1,6)
+
+d=[
+    ('pertime', 'O'),
+    ('seconds', 'O'),
+    ('usecpertime', 'i4'),
+    ('calls', 'i4'),
+    ('errors', 'i4'),
+    ('syscallno', 'i4')
+]
+
+l=[ (v['pertime'] , v['seconds'] , v['usecpertime'],  v['calls'], v['errors'], v['syscallno']) for v in strace.values() ]
+m=np.array(l, dtype=d).reshape(len(l),-1)
 
 print(m)
