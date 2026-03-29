@@ -1,42 +1,57 @@
 #!/usr/bin/python3
 import json
 import numpy as np
-strace={}
-try:
-    with open("sudo_date.txt") as f:
-        for linie in f:
-            linie=linie.strip()
-            if not linie or linie.startswith('%') or linie.startswith('-'):
-                continue
-            if not linie or not linie[0].isdigit():
-                continue
-            elemente = linie.split()
-            
-            if len(elemente) == 5:
-                pertime, sec, usec, calls, syscallname = elemente
-                errors=0
-            elif len(elemente) == 6:
-                pertime, sec, usec, calls,errors, syscallname = elemente
-            
+def matrice(fisier, syscalls):
+    strace={}
 
-            else: 
-                continue
-            pertime=pertime.replace(',', '.')
-            sec=sec.replace(',', '.')
-            strace[syscallname]={
-                'pertime': float(pertime),
-                'seconds': float(sec),
-                'usecpertime': int(usec),
-                'calls': int(calls),
-                'errors': int(errors),
-                'syscallname': syscallname,
-                'syscallno': 0
-            }
+    try:
+        with open(fisier) as f:
+            for linie in f:
+                linie=linie.strip()
+                if not linie or linie.startswith('%') or linie.startswith('-'):
+                    continue
+                if not linie or not linie[0].isdigit():
+                    continue
+                elemente = linie.split()
+                
+                if len(elemente) == 5:
+                    pertime, sec, usec, calls, syscallname = elemente
+                    errors=0
+                elif len(elemente) == 6:
+                    pertime, sec, usec, calls,errors, syscallname = elemente
+                else: 
+                    continue
+                pertime=pertime.replace(',', '.')
+                sec=sec.replace(',', '.')
+                strace[syscallname]={
+                    'pertime': float(pertime),
+                    'seconds': float(sec),
+                    'usecpertime': int(usec),
+                    'calls': int(calls),
+                    'errors': int(errors),
+                    'syscallname': syscallname,
+                    'syscallno': 0
+                }
+    for name in syscalls:
+        number=syscalls[name]['syscallno']
+        if name in strace:
+            strace[name]['syscallno']=number
+    d=[
+        ('syscallname', 'U40'),
+        ('pertime', 'O'),
+        ('seconds', 'O'),
+        ('usecpertime', 'i4'),
+        ('calls', 'i4'),
+        ('errors', 'i4'),
+        ('syscallno', 'i4')
+    ]
+    l=[ (v['syscallname'], v['pertime'] , v['seconds'] , v['usecpertime'],  v['calls'], v['errors'], v['syscallno']) for k, v in strace.items() if k!='total' ]
+    return np.array(l, dtype=d).reshape(len(l),-1)
 
-except FileNotFoundError:
-    print("file not found")
-except Exception as e:
-    print(f"{e}")
+    except FileNotFoundError:
+        print("file not found")
+    except Exception as e:
+        print(f"{e}")
 
 syscalls={}
 try:
@@ -58,30 +73,4 @@ try:
                     continue
 except FileNotFoundError:
     print("file not found")
-for name in syscalls:
-    number=syscalls[name]['syscallno']
-    if name in strace:
-        strace[name]['syscallno']=number
 
-# print(json.dumps(syscalls, indent=4))
-print(json.dumps(strace, indent=3))
-
-d=[
-    ('syscallname', 'U40'),
-    ('pertime', 'O'),
-    ('seconds', 'O'),
-    ('usecpertime', 'i4'),
-    ('calls', 'i4'),
-    ('errors', 'i4'),
-    ('syscallno', 'i4')
-]
-
-# for k in strace.keys():
-#     print(k)
-
-l=[ (v['syscallname'], v['pertime'] , v['seconds'] , v['usecpertime'],  v['calls'], v['errors'], v['syscallno']) for k, v in strace.items() if k!='total' ]
-
-
-m=np.array(l, dtype=d).reshape(len(l),-1)
-
-print(m)
