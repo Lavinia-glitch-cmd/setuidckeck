@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import json
+import pandas as pd
 import numpy as np
 import os
 programe=["sudo", "passwd"]
@@ -50,12 +51,13 @@ def vectorise(fisier, syscalls):
             ('syscallno', 'i4')
         ]
         l=[ (v['syscallname'], v['pertime'] , v['seconds'] , v['usecpertime'],  v['calls'], v['errors'], v['syscallno']) for k, v in strace.items() if k!='total' ]
-        return np.array(l, dtype=d).reshape(len(l),-1)
+        return np.array(l, dtype=d)
 
     except FileNotFoundError:
         print("file not found")
     except Exception as e:
         print(f"{e}")
+    return None
 
 syscalls={}
 try:
@@ -77,11 +79,23 @@ try:
                     continue
 except FileNotFoundError:
     print("file not found")
-
+matrices={}
 for progr in programe:
     for fisier in director:
         if fisier.startswith(f"{progr}") and not fisier.endswith(('.py','.sh','.txt')):
             matrice=vectorise(fisier, syscalls)
-            print(f"pentru fisierul {fisier}:")
-            print(matrice, end="\n\n")
-
+            #print(f"pentru fisierul {fisier}:")
+            #print(matrice, end="\n\n")
+            if matrice is not None:
+                matrices[fisier]=matrice
+                
+            
+for nume, mat in matrices.items():
+    print(f"--- Matrice pentru {nume} (forma {mat.shape}) ---")
+    df=pd.DataFrame(mat)
+    df=df.set_index('syscallname')
+    print(df)
+    x=df['calls'].sum()
+    print(x)
+    
+    
