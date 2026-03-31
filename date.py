@@ -2,9 +2,8 @@
 import json
 import numpy as np
 import os
-program="sudo"
+programe=["sudo", "passwd"]
 director=os.listdir(".")
-
 
 def vectorise(fisier, syscalls):
     strace={}
@@ -79,9 +78,10 @@ try:
 except FileNotFoundError:
     print("file not found")
 
+for progr in programe:
+    for fisier in director:
+        if fisier.startswith(f"{progr}") and not fisier.endswith(('.py','.sh','.txt')):
+            matrice=vectorise(fisier, syscalls)
+            print(f"pentru fisierul {fisier}:")
+            print(matrice, end="\n\n")
 
-for fisier in director:
-    if fisier.startswith(f"{program}") and not fisier.endswith(('.py','.sh','.txt')):
-        matrice=vectorise(fisier, syscalls)
-        print(f"pentru fisierul {fisier}:")
-        print(matrice, end="\n\n")
