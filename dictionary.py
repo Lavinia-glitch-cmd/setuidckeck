@@ -3,10 +3,16 @@ from collections.abc import MutableMapping
 class Dictionary(MutableMapping):
     def __init__(self):
         self.dict={}
+        
     def __getitem__(self, key):
         return self.dict[key]
+        
     def __setitem__(self, key, value):
-        self.dict[key]=value     
+        if key not in self.dict: 
+            self.dict[key]=[]
+        
+        self.dict[key].append(value) 
+        
     def __delitem__(self, key):
         del self.dict[key]
         
@@ -27,22 +33,16 @@ try:
         
         for line in f:
             line=line.strip().split()
-            #print(line)
-            sys_call_number=int(line[0])
-            entry_name=line[2]
-            if len(line) > 3:
-                kernel_symbol=line[3]
-            print('%s %s %s' % (sys_call_number, entry_name, kernel_symbol) )
-            temporary_list=[sys_call_number, entry_name]
-            for key, value in SysCallTable.items():
-                __setitem__(SysCallTable, key, value)
-            print(SysCallTable.dict)
+           
+            number=int(line[0])
+            name=line[2]
+            entry_point=line[3] if len(line) > 3 else "N/A"
             
+            SysCallTable[name]=[number, entry_point]
             
-            
-        
-            
-            
+             
+    import json
+    #print(json.dumps(SysCallTable.dict, indent=4))
             
 except FileNotFoundError:
     print("file not found")
