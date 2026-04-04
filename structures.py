@@ -10,7 +10,6 @@ class Dictionary(MutableMapping):
     def __setitem__(self, key, value):
         if key not in self.dict: 
             self.dict[key]=[]
-        
         self.dict[key].append(value) 
         
     def __delitem__(self, key):
