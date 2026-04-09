@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 from structures import Dictionary
 
@@ -18,12 +17,9 @@ def Get_SysCallTable():
                     SysCallTable[syscall_name]=[syscall_number, entry_point]
                 except ValueError: 
                     continue
-        return SysCallTable
     except FileNotFoundError:
         return None
-if __name__ == "__main__":
-    table=Get_SysCallTable()
-    if table:
-        print(json.dumps(table.dict, indent=4))
+    return SysCallTable
+
     
         
