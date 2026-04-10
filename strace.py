@@ -18,7 +18,6 @@ def GetStraceDictionary(file):
                 line[0]=float(line[0].replace(',', '.'))
                 if len(line) == 5 :
                     line.insert(4, '0')
-                #print(line)
                 data={ coloumn_header[i]: line[i] for i in range(len(line)) }
                 result[line[-1]]=data
     return result.dict

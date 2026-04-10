@@ -19,6 +19,7 @@ def Get_SysCallTable():
                     continue
     except FileNotFoundError:
         return None
+    print(SysCallTable.dict)
     return SysCallTable
 
     
