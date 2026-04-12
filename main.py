@@ -1,7 +1,6 @@
 import json
 import pandas as pd
 import numpy as np
-import pandas as pd
 from pathlib import Path
 import subprocess
 
@@ -13,14 +12,14 @@ from flags import Get_BinaryFlags
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import IsolationForest
     
-def Generate_Binary(binary_name):
+def Generate_Binary(binary_name, flags):
     
     base_path = Path(__file__).resolve().parent
     
     logs_dir = base_path / f"{binary_name}_flags"
     logs_dir.mkdir(parents=True, exist_ok=True)
     
-    flags=Get_BinaryFlags(binary_name)
+    
     
     for flag in flags:
         output_path=logs_dir / f"{binary_name}_{flag.strip('-')}.txt"
@@ -42,27 +41,39 @@ def Generate_Binary(binary_name):
             if strace_syscall_name in syscalls.dict:
                 syscall_no=syscalls.dict[strace_syscall_name][0][0]
                 strace_dict[strace_syscall_name][0]["syscall_no"] = syscall_no
-                
+    #print(json.dumps(strace_results, indent=4))        
     matrices=GetMatrices(strace_results, syscalls)
     vector=Vectorise(matrices)
     scaler = StandardScaler()
     vector_scaled=scaler.fit_transform(vector)
+    print(f"vecotr pt {binary_name} ------------------")
+    np.set_printoptions(threshold=np.inf, suppress=True, linewidth=100)
+    print(vector.shape)
+
+def Get_SUID_binaries():
+    cmd= "find /bin /usr/bin /sbin -type f -perm /4000 2>/dev/null"
+    result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    paths= [b for b in result.stdout.split('\n') if b]
+    binaries=[]
     
-    np.set_printoptions(threshold=np.inf, suppress=True, linewidth=180)
-    print(vector)
-    
-    
-    #print(matrices)
-  
-  
-  
+    for path in paths:
+        binary_name=Path(path).name
+        flags=Get_BinaryFlags(binary_name)
+        if flags and len(flags)>0:
+            binaries.append((path, flags))
+        else:
+            pass
+    return binaries
+        
 def main():
-    binaries=["sudo", "passwd"]
-    for binary in binaries:
+    SUID_binaries=Get_SUID_binaries()
+    for binary_path, flags in SUID_binaries:
+        bin_path = Path(binary_path)
+        binary_name = bin_path.name
         try:
-            Generate_Binary(binary)
+            Generate_Binary(binary_name, flags)
         except Exception as e:
-            print(f"Error found for {binary}: {e}")
+            print(f"Error found for {binary_name}: {e}")
 if __name__ == "__main__":
     main()
     
