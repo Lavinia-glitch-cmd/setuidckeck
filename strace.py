@@ -32,7 +32,7 @@ def GetStraceDictionary(file):
                         line.insert(4, '0')
                     data={ coloumn_header[i]: line[i] for i in range(len(line)) }
                     result[line[-1]]=data
-    print(result.dict)
+    
     return result.dict
                 
 
