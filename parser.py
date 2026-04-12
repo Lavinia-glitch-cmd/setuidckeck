@@ -15,11 +15,13 @@ def Get_SysCallTable():
                     syscall_name=line[2]
                     entry_point=line[3] if len(line) > 3 else "N/A"
                     SysCallTable[syscall_name]=[syscall_number, entry_point]
+                    
                 except ValueError: 
                     continue
+
     except FileNotFoundError:
         return None
-    print(SysCallTable.dict)
+    
     return SysCallTable
 
     

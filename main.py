@@ -13,8 +13,8 @@ from flags import Get_BinaryFlags
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import IsolationForest
     
-def main():
-    binary_name="sudo"
+def Generate_Binary(binary_name):
+    
     base_path = Path(__file__).resolve().parent
     
     logs_dir = base_path / f"{binary_name}_flags"
@@ -48,12 +48,21 @@ def main():
     scaler = StandardScaler()
     vector_scaled=scaler.fit_transform(vector)
     
-    np.set_printoptions(threshold=np.inf, suppress=True, linewidth=300)
-    #print(vector)
+    np.set_printoptions(threshold=np.inf, suppress=True, linewidth=180)
+    print(vector)
     
     
     #print(matrices)
   
+  
+  
+def main():
+    binaries=["sudo", "passwd"]
+    for binary in binaries:
+        try:
+            Generate_Binary(binary)
+        except Exception as e:
+            print(f"Error found for {binary}: {e}")
 if __name__ == "__main__":
     main()
     

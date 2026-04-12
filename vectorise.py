@@ -2,14 +2,12 @@ import numpy as np
 from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler
 
-def vectorise(matrices):
+def Vectorise(matrices):
     vector=[]
-    file_names=[]
     for name, mat in matrices.items():
         line=mat[:, 1:]
         vector.append(line.flatten())
-        file_names.append(name)
-    return np.array(vector), file_names
+    return np.array(vector)
 
 def GetMatrices(strace_results, syscalls_dict):
     matrices={}
