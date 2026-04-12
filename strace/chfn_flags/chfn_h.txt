@@ -1,0 +1,39 @@
+chfn: option requires an argument -- 'h'
+Usage: chfn [options] [LOGIN]
+
+Options:
+  -f, --full-name FULL_NAME     change user's full name
+  -h, --home-phone HOME_PHONE   change user's home phone number
+  -o, --other OTHER_INFO        change user's other GECOS information
+  -r, --room ROOM_NUMBER        change user's room number
+  -R, --root CHROOT_DIR         directory to chroot into
+  -u, --help                    display this help message and exit
+  -w, --work-phone WORK_PHONE   change user's office phone number
+      --extrausers              Use the extra users database
+
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 27,67    0,000384          10        36           mmap
+ 22,12    0,000307         307         1           execve
+ 15,71    0,000218           6        36        24 openat
+  8,65    0,000120          13         9           mprotect
+  5,12    0,000071           6        11           write
+  4,83    0,000067           5        12           read
+  4,03    0,000056           4        12           close
+  3,31    0,000046           4        11           fstat
+  1,37    0,000019          19         1           munmap
+  1,22    0,000017           5         3           brk
+  1,15    0,000016           4         4           prctl
+  1,01    0,000014           7         2         2 statfs
+  0,79    0,000011           5         2         2 access
+  0,65    0,000009           4         2           pread64
+  0,36    0,000005           5         1           arch_prctl
+  0,29    0,000004           4         1           getuid
+  0,29    0,000004           4         1           fstatfs
+  0,29    0,000004           4         1           set_tid_address
+  0,29    0,000004           4         1           set_robust_list
+  0,29    0,000004           4         1           prlimit64
+  0,29    0,000004           4         1           getrandom
+  0,29    0,000004           4         1           rseq
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,001388           9       150        28 total

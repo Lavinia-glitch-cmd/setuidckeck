@@ -1,0 +1,60 @@
+sudo: option requires an argument -- 'u'
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user]
+            [-u user] [command [arg ...]]
+usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] [VAR=value] [-i | -s] [command [arg ...]]
+usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] file ...
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 27,62    0,000350           8        41           mmap
+ 23,05    0,000292         292         1           execve
+ 13,34    0,000169           4        39        18 openat
+  5,76    0,000073           2        27           read
+  4,89    0,000062           2        24           close
+  4,42    0,000056           2        22           fstat
+  3,24    0,000041           3        11           write
+  2,84    0,000036           1        23           rt_sigaction
+  2,13    0,000027           3         7         2 newfstatat
+  2,05    0,000026          13         2           sendto
+  1,42    0,000018           4         4           recvmsg
+  1,10    0,000014           4         3           socket
+  1,03    0,000013           6         2         2 connect
+  0,79    0,000010           1         9           fcntl
+  0,55    0,000007           2         3           ioctl
+  0,55    0,000007           3         2           pread64
+  0,47    0,000006           3         2         2 access
+  0,32    0,000004           2         2           lseek
+  0,32    0,000004           1         3           brk
+  0,32    0,000004           2         2           getgroups
+  0,32    0,000004           0         6           prctl
+  0,32    0,000004           4         1           arch_prctl
+  0,24    0,000003           3         1           getcwd
+  0,24    0,000003           1         2           umask
+  0,24    0,000003           1         2           geteuid
+  0,24    0,000003           3         1           set_tid_address
+  0,24    0,000003           3         1           set_robust_list
+  0,24    0,000003           0        18           prlimit64
+  0,24    0,000003           3         1           rseq
+  0,16    0,000002           2         1           rt_sigprocmask
+  0,16    0,000002           2         1           getpid
+  0,16    0,000002           2         1           bind
+  0,16    0,000002           2         1           getsockname
+  0,16    0,000002           2         1           uname
+  0,16    0,000002           2         1           getuid
+  0,16    0,000002           2         1           getgid
+  0,16    0,000002           2         1           getpgid
+  0,08    0,000001           1         1           getegid
+  0,08    0,000001           1         1           getppid
+  0,08    0,000001           1         1           getsid
+  0,00    0,000000           0        10           mprotect
+  0,00    0,000000           0         1           munmap
+  0,00    0,000000           0         2         2 statfs
+  0,00    0,000000           0         1           fstatfs
+  0,00    0,000000           0         1           getrandom
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,001267           4       288        26 total
