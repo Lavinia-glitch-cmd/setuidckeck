@@ -66,7 +66,7 @@ def Get_SUID_binaries():
             pass
     return binaries
         
-def main():
+def GetVectors():
     SUID_binaries=Get_SUID_binaries()
     all_vectors=[]
     for binary_path, flags in SUID_binaries:
@@ -79,9 +79,14 @@ def main():
             
         except Exception as e:
             print(f"Error found for {binary_name}: {e}")
-    #np.set_printoptions(threshold=np.inf, suppress=True, linewidth=200)
-    X=np.vstack(all_vectors)
     
+    X=np.vstack(all_vectors)
+    return X
+    
+    np.save('vectors.npy', X)
+
+def main():
+    X=GetVectors()
 if __name__ == "__main__":
     main()
     
