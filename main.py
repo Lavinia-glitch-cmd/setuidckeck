@@ -6,12 +6,31 @@ import subprocess
 
 from strace import GetStraceDictionary
 from parser import Get_SysCallTable
-from vectorise import GetMatrices, Vectorise
+from vectorise import Vectorise, GetMatrices
 from flags import Get_BinaryFlags
+from training import training
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import IsolationForest
+   
+def GetVectors():
+    SUID_binaries=Get_SUID_binaries()
+    all_vectors=[]
+    for binary_path, flags in SUID_binaries:
+        bin_path = Path(binary_path)
+        binary_name = bin_path.name
+        try:
+            vector=Generate_Binary(binary_name, flags)
+            if vector is not None:
+                all_vectors.append(vector)
+            
+        except Exception as e:
+            print(f"Error found for {binary_name}: {e}")
     
+    X=np.vstack(all_vectors)
+    return X
+  
+ 
 def Generate_Binary(binary_name, flags):
     base_path = Path(__file__).resolve().parent
     logs_dir = base_path / f"{binary_name}_flags"
@@ -33,20 +52,11 @@ def Generate_Binary(binary_name, flags):
         for strace_syscall_name in list(strace_dict.keys() ):
             if strace_syscall_name in syscalls.dict:
                 syscall_no=syscalls.dict[strace_syscall_name][0][0]
-                strace_dict[strace_syscall_name][0]["syscall_no"] = syscall_no
-    #print(json.dumps(strace_results, indent=4)) 
+                strace_dict[strace_syscall_name][0]["syscall_no"] = syscall_no 
     
     matrices=GetMatrices(strace_results, syscalls)
     vector=Vectorise(matrices)
     return vector
-    scaler = StandardScaler()
-    vector_scaled=scaler.fit_transform(vector)
-    #print(f"vector pt {binary_name} ------------------")
-    np.set_printoptions(threshold=np.inf, suppress=True, linewidth=200)
-    
-    #print(vector)
-    x=pd.DataFrame(vector)
-    #print(x)
     
     
 
@@ -66,27 +76,17 @@ def Get_SUID_binaries():
             pass
     return binaries
         
-def GetVectors():
-    SUID_binaries=Get_SUID_binaries()
-    all_vectors=[]
-    for binary_path, flags in SUID_binaries:
-        bin_path = Path(binary_path)
-        binary_name = bin_path.name
-        try:
-            vector=Generate_Binary(binary_name, flags)
-            if vector is not None:
-                all_vectors.append(vector)
-            
-        except Exception as e:
-            print(f"Error found for {binary_name}: {e}")
+  
     
-    X=np.vstack(all_vectors)
-    return X
-    
-    np.save('vectors.npy', X)
 
 def main():
     X=GetVectors()
+    print(X.shape)
+    training()
+    
+    
+    
+    
 if __name__ == "__main__":
     main()
     
