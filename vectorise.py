@@ -1,7 +1,5 @@
 import numpy as np
-from sklearn.ensemble import IsolationForest
-from sklearn.preprocessing import StandardScaler
-
+import pandas as pd
 def Vectorise(matrices):
     vector=[]
     for name, mat in matrices.items():
@@ -18,7 +16,9 @@ def GetMatrices(strace_results, syscalls_dict):
         syscalls.append((syscall_no, syscall_name))
     syscalls.sort()
     for file_name, file_data in strace_results.items():
+        
         file_matrix = np.zeros((len(syscalls), 6))
+        
         for i, (sys_no, sys_name) in enumerate(syscalls):
             file_matrix[i, 0] = sys_no
             if sys_name in file_data:
@@ -30,5 +30,9 @@ def GetMatrices(strace_results, syscalls_dict):
                     except:
                         file_matrix[i, col_idx] = 0.0
         matrices[file_name] = file_matrix
+        
+        #for better visualising data
+        print("matricea pentru %s" % file_name )
+        print(file_matrix)
         
     return matrices
