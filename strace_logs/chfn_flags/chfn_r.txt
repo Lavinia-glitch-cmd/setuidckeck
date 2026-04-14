@@ -1,0 +1,39 @@
+chfn: option requires an argument -- 'r'
+Usage: chfn [options] [LOGIN]
+
+Options:
+  -f, --full-name FULL_NAME     change user's full name
+  -h, --home-phone HOME_PHONE   change user's home phone number
+  -o, --other OTHER_INFO        change user's other GECOS information
+  -r, --room ROOM_NUMBER        change user's room number
+  -R, --root CHROOT_DIR         directory to chroot into
+  -u, --help                    display this help message and exit
+  -w, --work-phone WORK_PHONE   change user's office phone number
+      --extrausers              Use the extra users database
+
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 28,54    0,000395         395         1           execve
+ 23,70    0,000328           9        36        24 openat
+ 19,44    0,000269           7        36           mmap
+  4,70    0,000065           7         9           mprotect
+  4,55    0,000063           5        11           write
+  4,41    0,000061           5        12           read
+  3,18    0,000044           3        12           close
+  3,11    0,000043           3        11           fstat
+  1,16    0,000016           5         3           brk
+  1,08    0,000015          15         1           munmap
+  1,08    0,000015           3         4           prctl
+  1,01    0,000014           7         2         2 statfs
+  0,87    0,000012           6         2         2 access
+  0,58    0,000008           8         1           getuid
+  0,43    0,000006           3         2           pread64
+  0,36    0,000005           5         1           getrandom
+  0,36    0,000005           5         1           rseq
+  0,29    0,000004           4         1           fstatfs
+  0,29    0,000004           4         1           arch_prctl
+  0,29    0,000004           4         1           set_tid_address
+  0,29    0,000004           4         1           set_robust_list
+  0,29    0,000004           4         1           prlimit64
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,001384           9       150        28 total

@@ -1,0 +1,43 @@
+Current password: passwd: Authentication token manipulation error
+passwd: password unchanged
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 33,46    0,001257          11       114           mmap
+ 17,97    0,000675           8        84        27 openat
+ 13,12    0,000493           7        69           read
+  7,72    0,000290           4        61           close
+  7,35    0,000276           4        59         1 fstat
+  6,44    0,000242           9        26           mprotect
+  3,17    0,000119           5        20           munmap
+  1,57    0,000059          14         4         3 connect
+  1,46    0,000055           5        10           newfstatat
+  1,12    0,000042           4        10         4 prctl
+  0,77    0,000029           3         9         1 prlimit64
+  0,75    0,000028           3         8           rt_sigaction
+  0,72    0,000027           5         5           socket
+  0,64    0,000024           3         8           lseek
+  0,51    0,000019           6         3           getuid
+  0,48    0,000018           3         5           fcntl
+  0,40    0,000015           7         2         2 statfs
+  0,37    0,000014           4         3           futex
+  0,32    0,000012           4         3           brk
+  0,27    0,000010           2         5         5 ioctl
+  0,24    0,000009           4         2           rt_sigprocmask
+  0,21    0,000008           4         2           pread64
+  0,13    0,000005           2         2         2 access
+  0,13    0,000005           2         2           getpid
+  0,13    0,000005           5         1           fstatfs
+  0,11    0,000004           4         1           set_robust_list
+  0,11    0,000004           4         1           getrandom
+  0,11    0,000004           4         1           rseq
+  0,08    0,000003           3         1           umask
+  0,08    0,000003           3         1           arch_prctl
+  0,08    0,000003           3         1           set_tid_address
+  0,00    0,000000           0         4           write
+  0,00    0,000000           0         1           poll
+  0,00    0,000000           0         2           sendto
+  0,00    0,000000           0         2           recvfrom
+  0,00    0,000000           0         1           execve
+  0,00    0,000000           0         1           readlink
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,003757           7       534        45 total

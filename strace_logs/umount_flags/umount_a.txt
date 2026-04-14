@@ -1,0 +1,44 @@
+umount: /run/user/1000: target is busy.
+umount: /snap/snapd/26382: target is busy.
+umount: /snap/core20/2769: target is busy.
+umount: /snap/code/233: target is busy.
+umount: /sys/fs/cgroup: target is busy.
+umount: /dev/shm: target is busy.
+umount: /: target is busy.
+umount: /run: target is busy.
+umount: /dev: target is busy.
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 93,63    0,150107        2729        55         9 umount2
+  1,67    0,002678          11       229       173 statx
+  0,82    0,001316           9       145       144 readlink
+  0,61    0,000982           7       127           read
+  0,60    0,000956          11        80        12 openat
+  0,43    0,000682          12        55           newfstatat
+  0,34    0,000539           7        70           close
+  0,29    0,000465           8        54           getgid
+  0,28    0,000456           8        53           prctl
+  0,28    0,000453           6        68           fstat
+  0,28    0,000443           8        55           getuid
+  0,26    0,000417           7        54           getegid
+  0,26    0,000415           7        55           geteuid
+  0,18    0,000281          10        27           write
+  0,04    0,000062          10         6           brk
+  0,03    0,000044           7         6           rt_sigprocmask
+  0,01    0,000021           7         3           flock
+  0,00    0,000003           1         2           dup
+  0,00    0,000000           0        27           mmap
+  0,00    0,000000           0         7           mprotect
+  0,00    0,000000           0         1           munmap
+  0,00    0,000000           0         2           pread64
+  0,00    0,000000           0         3         2 access
+  0,00    0,000000           0         1           execve
+  0,00    0,000000           0         2         2 statfs
+  0,00    0,000000           0         1           arch_prctl
+  0,00    0,000000           0         1           set_tid_address
+  0,00    0,000000           0         1           set_robust_list
+  0,00    0,000000           0         1           prlimit64
+  0,00    0,000000           0         1           getrandom
+  0,00    0,000000           0         1           rseq
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,160320         134      1193       342 total

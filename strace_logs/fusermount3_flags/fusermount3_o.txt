@@ -1,0 +1,23 @@
+fusermount3: option requires an argument -- 'o'
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 26,98    0,000075           9         8           mmap
+ 14,75    0,000041          13         3           mprotect
+ 13,67    0,000038          38         1           write
+ 10,07    0,000028          14         2           openat
+  7,19    0,000020          20         1           munmap
+  5,40    0,000015           5         3           brk
+  4,32    0,000012           6         2           fstat
+  3,24    0,000009           4         2           close
+  2,88    0,000008           4         2           pread64
+  2,16    0,000006           6         1           read
+  1,80    0,000005           5         1           arch_prctl
+  1,80    0,000005           5         1           prlimit64
+  1,80    0,000005           5         1           getrandom
+  1,44    0,000004           4         1           set_robust_list
+  1,44    0,000004           4         1           rseq
+  1,08    0,000003           3         1           set_tid_address
+  0,00    0,000000           0         1         1 access
+  0,00    0,000000           0         1           execve
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,000278           8        33         1 total
