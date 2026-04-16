@@ -33,19 +33,25 @@ def GetVectors():
  
 def Generate_Binary(binary_name, flags):
     base_path = Path(__file__).resolve().parent
-    logs_dir = base_path / f"{binary_name}_flags"
+    main_logs_dir=base_path/"strace_logs"
+    logs_dir = main_logs_dir / f"{binary_name}_flags"
     logs_dir.mkdir(parents=True, exist_ok=True)
     for flag in flags:
         output_path=logs_dir / f"{binary_name}_{flag.strip('-')}.txt"
         if not output_path.exists():
             cmd=f"sudo timeout 2s strace -c {binary_name} {flag} </dev/null > /dev/null 2> {output_path}"
             subprocess.run(cmd, shell=True)
+            
+            
     syscalls = Get_SysCallTable()
     strace_results={}
     if logs_dir.exists() and logs_dir.is_dir():
         for file in logs_dir.iterdir():
             if file.is_file():
-                strace_results[file.name] = GetStraceDictionary(file)
+                parsed_data=GetStraceDictionary(file)
+                    
+                if parsed_data:
+                    strace_results[file.name] = GetStraceDictionary(file)
     else:
         return
     for file_name, strace_dict in strace_results.items():
@@ -70,8 +76,20 @@ def Get_SUID_binaries():
     for path in paths:
         binary_name=Path(path).name
         flags=Get_BinaryFlags(binary_name)
-        if flags and len(flags)>0:
-            binaries.append((path, flags))
+        valid_flags=[]
+        if flags :
+            for flag in flags:
+                test_cmd = f"sudo timeout 1s strace -c {path} {flag} </dev/null"
+                test_run = subprocess.run(test_cmd, shell=True, capture_output=True, text=True)
+                
+                output=test_run.stderr
+                invalid_patterns=["requires an argument", "option", "Try"]
+                if any(p in output for p in invalid_patterns):
+                    continue
+                else:
+                    valid_flags.append(flag)
+            if valid_flags:
+                binaries.append((path, valid_flags))
         else:
             pass
     return binaries
