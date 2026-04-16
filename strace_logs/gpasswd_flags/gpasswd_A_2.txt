@@ -1,0 +1,47 @@
+gpasswd: option requires an argument -- 'A'
+Usage: gpasswd [option] GROUP
+
+Options:
+  -a, --add USER                add USER to GROUP
+  -d, --delete USER             remove USER from GROUP
+  -h, --help                    display this help message and exit
+  -Q, --root CHROOT_DIR         directory to chroot into
+  -r, --remove-password         remove the GROUP's password
+  -R, --restrict                restrict access to GROUP to its members
+  -M, --members USER,...        set the list of members of GROUP
+      --extrausers              use the extra users database
+  -A, --administrators ADMIN,...
+                                set the list of administrators for GROUP
+Except for the -A and -M options, the options cannot be combined.
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 24,62    0,000360          10        33           mmap
+ 22,50    0,000329         329         1           execve
+ 10,74    0,000157           3        41        24 openat
+  8,48    0,000124           5        22           read
+  6,70    0,000098           5        19           close
+  5,47    0,000080          10         8           mprotect
+  4,92    0,000072           4        16           fstat
+  2,67    0,000039          13         3           socket
+  1,85    0,000027          13         2         2 connect
+  1,64    0,000024           6         4           newfstatat
+  1,37    0,000020           6         3         2 access
+  1,30    0,000019          19         1           munmap
+  1,09    0,000016           5         3           brk
+  1,09    0,000016           8         2         2 statfs
+  1,09    0,000016           4         4           prctl
+  0,75    0,000011           3         3           lseek
+  0,55    0,000008           4         2           pread64
+  0,55    0,000008           4         2           getuid
+  0,34    0,000005           5         1           fcntl
+  0,34    0,000005           5         1           fstatfs
+  0,34    0,000005           5         1           arch_prctl
+  0,34    0,000005           5         1           set_tid_address
+  0,34    0,000005           5         1           prlimit64
+  0,34    0,000005           5         1           getrandom
+  0,27    0,000004           4         1           set_robust_list
+  0,27    0,000004           4         1           rseq
+  0,00    0,000000           0        12           write
+  0,00    0,000000           0         1           getpid
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,001462           7       190        30 total

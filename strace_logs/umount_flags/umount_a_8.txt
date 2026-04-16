@@ -1,0 +1,40 @@
+umount: /run/user/1000: target is busy.
+umount: /snap/snapd/26382: target is busy.
+umount: /sys/fs/cgroup: target is busy.
+umount: /dev/shm: target is busy.
+umount: /: target is busy.
+umount: /run: target is busy.
+umount: /dev: target is busy.
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 14,77    0,000161           5        28        21 statx
+ 11,56    0,000126           6        21           write
+ 11,28    0,000123           4        30        12 openat
+ 10,00    0,000109           4        27           read
+  9,91    0,000108          15         7         7 umount2
+  6,24    0,000068           4        17        16 readlink
+  5,14    0,000056           2        20           close
+  4,50    0,000049           7         7           mprotect
+  3,39    0,000037           2        18           fstat
+  2,94    0,000032           4         8           newfstatat
+  2,75    0,000030           3        10           getuid
+  2,75    0,000030           3        10           geteuid
+  2,66    0,000029           3         9           prctl
+  2,39    0,000026           2         9           getgid
+  2,39    0,000026           2         9           getegid
+  1,28    0,000014           7         2         2 statfs
+  1,10    0,000012           0        27           mmap
+  1,10    0,000012          12         1           munmap
+  0,92    0,000010           3         3           brk
+  0,64    0,000007           3         2           dup
+  0,46    0,000005           2         2         2 access
+  0,37    0,000004           4         1           set_robust_list
+  0,37    0,000004           4         1           getrandom
+  0,28    0,000003           3         1           arch_prctl
+  0,28    0,000003           3         1           set_tid_address
+  0,28    0,000003           3         1           prlimit64
+  0,28    0,000003           3         1           rseq
+  0,00    0,000000           0         2           pread64
+  0,00    0,000000           0         1           execve
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,001090           3       276        60 total

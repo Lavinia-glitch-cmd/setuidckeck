@@ -1,0 +1,72 @@
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user]
+            [-u user] [command [arg ...]]
+usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] [VAR=value] [-i | -s] [command [arg ...]]
+usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] file ...
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 17,26    0,000694           8        83           mmap
+ 12,93    0,000520           7        71        23 openat
+  8,51    0,000342         342         1           execve
+  7,93    0,000319           5        58           read
+  7,49    0,000301           5        59           close
+  5,37    0,000216           4        53         1 fstat
+  4,38    0,000176           9        19           mprotect
+  2,96    0,000119           9        12           socket
+  2,91    0,000117          11        10         8 connect
+  2,64    0,000106           6        17         2 newfstatat
+  2,11    0,000085          28         3           sendto
+  2,09    0,000084           3        23           rt_sigaction
+  2,04    0,000082           8        10           write
+  1,99    0,000080           3        23           fcntl
+  1,99    0,000080           3        21           prlimit64
+  1,67    0,000067           9         7           munmap
+  1,49    0,000060          10         6           recvmsg
+  1,14    0,000046           9         5           brk
+  1,14    0,000046           5         9         4 ioctl
+  1,14    0,000046           5         9           setresuid
+  1,02    0,000041          41         1           sendmmsg
+  0,87    0,000035           4         8           lseek
+  0,65    0,000026           8         3           poll
+  0,62    0,000025           6         4           setgroups
+  0,57    0,000023           1        12         4 prctl
+  0,55    0,000022          11         2           getdents64
+  0,50    0,000020           4         5           setresgid
+  0,47    0,000019           9         2         2 statfs
+  0,40    0,000016           5         3         2 readlink
+  0,37    0,000015           5         3           getsockname
+  0,35    0,000014           7         2         2 access
+  0,35    0,000014           7         2           bind
+  0,30    0,000012           6         2           recvfrom
+  0,30    0,000012          12         1           pipe2
+  0,27    0,000011           2         5           futex
+  0,25    0,000010           5         2           getrandom
+  0,22    0,000009           3         3           getpid
+  0,22    0,000009           4         2           getgroups
+  0,20    0,000008           4         2           pread64
+  0,20    0,000008           4         2           umask
+  0,20    0,000008           4         2           getresuid
+  0,20    0,000008           4         2           getresgid
+  0,17    0,000007           7         1           setsockopt
+  0,17    0,000007           3         2           geteuid
+  0,15    0,000006           6         1           getcwd
+  0,12    0,000005           5         1           uname
+  0,12    0,000005           5         1           getpgid
+  0,12    0,000005           5         1           fstatfs
+  0,10    0,000004           1         3           rt_sigprocmask
+  0,10    0,000004           4         1           getgid
+  0,10    0,000004           4         1           getegid
+  0,10    0,000004           4         1           getppid
+  0,10    0,000004           4         1           getsid
+  0,10    0,000004           4         1           arch_prctl
+  0,07    0,000003           3         1           getuid
+  0,07    0,000003           3         1           set_robust_list
+  0,07    0,000003           3         1           rseq
+  0,05    0,000002           2         1           set_tid_address
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,004021           6       588        48 total

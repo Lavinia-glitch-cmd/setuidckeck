@@ -1,0 +1,27 @@
+su: option requires an argument -- 'g'
+Try 'su --help' for more information.
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 33,77    0,000283          10        27           mmap
+ 26,37    0,000221           6        33        24 openat
+  7,28    0,000061           8         7           mprotect
+  5,61    0,000047           5         8           read
+  5,37    0,000045           4        11           close
+  4,65    0,000039           4         8           fstat
+  4,53    0,000038          19         2           write
+  2,15    0,000018           6         3           brk
+  2,03    0,000017          17         1           munmap
+  1,79    0,000015           3         4           prctl
+  1,07    0,000009           4         2           pread64
+  0,95    0,000008           4         2           dup
+  0,84    0,000007           7         1         1 access
+  0,60    0,000005           5         1           fstatfs
+  0,60    0,000005           5         1           getrandom
+  0,48    0,000004           4         1           arch_prctl
+  0,48    0,000004           4         1           set_tid_address
+  0,48    0,000004           4         1           set_robust_list
+  0,48    0,000004           4         1           prlimit64
+  0,48    0,000004           4         1           rseq
+  0,00    0,000000           0         1           execve
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,000838           7       117        25 total

@@ -1,0 +1,39 @@
+chfn: option requires an argument -- 'h'
+Usage: chfn [options] [LOGIN]
+
+Options:
+  -f, --full-name FULL_NAME     change user's full name
+  -h, --home-phone HOME_PHONE   change user's home phone number
+  -o, --other OTHER_INFO        change user's other GECOS information
+  -r, --room ROOM_NUMBER        change user's room number
+  -R, --root CHROOT_DIR         directory to chroot into
+  -u, --help                    display this help message and exit
+  -w, --work-phone WORK_PHONE   change user's office phone number
+      --extrausers              Use the extra users database
+
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 30,72    0,000298           8        36           mmap
+ 29,38    0,000285         285         1           execve
+  8,66    0,000084           2        36        24 openat
+  7,53    0,000073           8         9           mprotect
+  5,46    0,000053           4        12           read
+  4,33    0,000042           3        12           close
+  3,61    0,000035           3        11           fstat
+  1,55    0,000015          15         1           munmap
+  1,55    0,000015           5         3           brk
+  1,44    0,000014           7         2         2 statfs
+  1,24    0,000012           3         4           prctl
+  1,03    0,000010           5         2         2 access
+  0,82    0,000008           4         2           pread64
+  0,41    0,000004           4         1           fstatfs
+  0,41    0,000004           4         1           arch_prctl
+  0,41    0,000004           4         1           prlimit64
+  0,41    0,000004           4         1           getrandom
+  0,41    0,000004           4         1           rseq
+  0,31    0,000003           3         1           set_tid_address
+  0,31    0,000003           3         1           set_robust_list
+  0,00    0,000000           0        11           write
+  0,00    0,000000           0         1           getuid
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,000970           6       150        28 total

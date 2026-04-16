@@ -1,0 +1,44 @@
+New password: Password change has been aborted.
+passwd: Authentication token manipulation error
+passwd: password unchanged
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 32,34    0,000996           8       114           mmap
+ 13,70    0,000422           4        89        28 openat
+  9,84    0,000303           4        74           read
+  9,35    0,000288         288         1           execve
+  7,92    0,000244           3        65           close
+  7,05    0,000217           8        26           mprotect
+  6,75    0,000208           3        62         1 fstat
+  3,15    0,000097           4        20           munmap
+  1,82    0,000056           4        13           newfstatat
+  1,20    0,000037           3        10         4 prctl
+  1,10    0,000034           8         4         3 connect
+  0,91    0,000028           5         5           socket
+  0,68    0,000021           1        11           lseek
+  0,68    0,000021          10         2         2 statfs
+  0,58    0,000018           6         3           brk
+  0,39    0,000012           2         5           fcntl
+  0,39    0,000012           4         3           futex
+  0,32    0,000010           5         2         2 access
+  0,26    0,000008           2         3           getuid
+  0,23    0,000007           3         2           rt_sigprocmask
+  0,23    0,000007           3         2           pread64
+  0,19    0,000006           6         1           getrandom
+  0,16    0,000005           5         1           fstatfs
+  0,16    0,000005           5         1           arch_prctl
+  0,13    0,000004           4         1           set_tid_address
+  0,13    0,000004           0         9         1 prlimit64
+  0,13    0,000004           4         1           rseq
+  0,10    0,000003           1         2           getpid
+  0,10    0,000003           3         1           set_robust_list
+  0,00    0,000000           0         4           write
+  0,00    0,000000           0         1           poll
+  0,00    0,000000           0         8           rt_sigaction
+  0,00    0,000000           0         4         4 ioctl
+  0,00    0,000000           0         2           sendto
+  0,00    0,000000           0         2           recvfrom
+  0,00    0,000000           0         1           readlink
+  0,00    0,000000           0         1           umask
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,003080           5       556        45 total

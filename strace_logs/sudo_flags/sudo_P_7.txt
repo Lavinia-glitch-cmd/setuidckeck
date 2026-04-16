@@ -1,0 +1,71 @@
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user]
+            [-u user] [command [arg ...]]
+usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] [VAR=value] [-i | -s] [command [arg ...]]
+usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] file ...
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 26,68    0,000515           8        63           mmap
+ 11,97    0,000231           3        61        21 openat
+  7,46    0,000144           2        50           close
+  6,68    0,000129           2        51           read
+  5,80    0,000112           2        45           fstat
+  4,92    0,000095           6        15           mprotect
+  3,99    0,000077           7        10           write
+  3,99    0,000077           8         9         7 connect
+  3,16    0,000061           5        11           socket
+  2,59    0,000050           3        14         2 newfstatat
+  2,44    0,000047          47         1           sendmmsg
+  1,97    0,000038           1        21           prlimit64
+  1,76    0,000034           1        19           fcntl
+  1,61    0,000031          10         3           munmap
+  1,61    0,000031           3         9           setresuid
+  1,09    0,000021           7         3           poll
+  1,09    0,000021           2         9         4 ioctl
+  1,04    0,000020           4         5           brk
+  1,04    0,000020           6         3           sendto
+  0,93    0,000018           3         5           setresgid
+  0,88    0,000017           8         2           getdents64
+  0,83    0,000016           2         7           lseek
+  0,73    0,000014           4         3         2 readlink
+  0,67    0,000013           2         6           recvmsg
+  0,57    0,000011           5         2         2 access
+  0,57    0,000011           5         2           recvfrom
+  0,47    0,000009           3         3           getsockname
+  0,47    0,000009           4         2           futex
+  0,41    0,000008           4         2           pread64
+  0,41    0,000008           8         1           setsockopt
+  0,31    0,000006           6         1           set_tid_address
+  0,26    0,000005           2         2           bind
+  0,26    0,000005           2         2           getresuid
+  0,26    0,000005           2         2           getresgid
+  0,21    0,000004           4         1           arch_prctl
+  0,21    0,000004           4         1           set_robust_list
+  0,21    0,000004           4         1           pipe2
+  0,21    0,000004           4         1           rseq
+  0,16    0,000003           1         2           getrandom
+  0,10    0,000002           1         2           getpid
+  0,00    0,000000           0        23           rt_sigaction
+  0,00    0,000000           0         1           rt_sigprocmask
+  0,00    0,000000           0         1           execve
+  0,00    0,000000           0         1           uname
+  0,00    0,000000           0         1           getcwd
+  0,00    0,000000           0         2           umask
+  0,00    0,000000           0         1           getuid
+  0,00    0,000000           0         1           getgid
+  0,00    0,000000           0         2           geteuid
+  0,00    0,000000           0         1           getegid
+  0,00    0,000000           0         1           getppid
+  0,00    0,000000           0         2           getgroups
+  0,00    0,000000           0         1           getpgid
+  0,00    0,000000           0         1           getsid
+  0,00    0,000000           0         2         2 statfs
+  0,00    0,000000           0         1           fstatfs
+  0,00    0,000000           0         6           prctl
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,001930           3       500        40 total

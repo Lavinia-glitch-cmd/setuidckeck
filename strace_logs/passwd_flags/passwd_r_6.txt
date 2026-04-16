@@ -1,0 +1,49 @@
+passwd: option requires an argument -- 'r'
+Usage: passwd [options] [LOGIN]
+
+Options:
+  -a, --all                     report password status on all accounts
+  -d, --delete                  delete the password for the named account
+  -e, --expire                  force expire the password for the named account
+  -h, --help                    display this help message and exit
+  -k, --keep-tokens             change password only if expired
+  -i, --inactive INACTIVE       set password inactive after expiration
+                                to INACTIVE
+  -l, --lock                    lock the password of the named account
+  -n, --mindays MIN_DAYS        set minimum number of days before password
+                                change to MIN_DAYS
+  -q, --quiet                   quiet mode
+  -r, --repository REPOSITORY   change password in REPOSITORY repository
+  -R, --root CHROOT_DIR         directory to chroot into
+  -S, --status                  report password status on the named account
+  -u, --unlock                  unlock the password of the named account
+  -w, --warndays WARN_DAYS      set expiration warning days to WARN_DAYS
+  -x, --maxdays MAX_DAYS        set maximum number of days before password
+                                change to MAX_DAYS
+
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 30,78    0,000321           8        36           mmap
+ 26,85    0,000280         280         1           execve
+  9,20    0,000096           2        36        24 openat
+  7,57    0,000079           8         9           mprotect
+  6,33    0,000066           5        12           read
+  4,41    0,000046           3        12           close
+  4,12    0,000043           3        11           fstat
+  1,73    0,000018           6         3           brk
+  1,63    0,000017          17         1           munmap
+  1,44    0,000015           3         4           prctl
+  1,34    0,000014           7         2         2 statfs
+  0,96    0,000010           5         2         2 access
+  0,77    0,000008           4         2           pread64
+  0,38    0,000004           4         1           getuid
+  0,38    0,000004           4         1           fstatfs
+  0,38    0,000004           4         1           arch_prctl
+  0,38    0,000004           4         1           set_tid_address
+  0,38    0,000004           4         1           prlimit64
+  0,38    0,000004           4         1           getrandom
+  0,29    0,000003           3         1           set_robust_list
+  0,29    0,000003           3         1           rseq
+  0,00    0,000000           0        18           write
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,001043           6       157        28 total

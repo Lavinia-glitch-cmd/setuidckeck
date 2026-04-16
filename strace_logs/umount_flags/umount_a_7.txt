@@ -1,0 +1,40 @@
+umount: /run/user/1000: target is busy.
+umount: /snap/snapd/26382: target is busy.
+umount: /sys/fs/cgroup: target is busy.
+umount: /dev/shm: target is busy.
+umount: /: target is busy.
+umount: /run: target is busy.
+umount: /dev: target is busy.
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 17,52    0,000335         335         1           execve
+ 14,38    0,000275          10        27           mmap
+ 10,98    0,000210           7        30        12 openat
+  7,85    0,000150           5        27           read
+  7,69    0,000147           5        28        21 statx
+  7,32    0,000140          20         7         7 umount2
+  6,28    0,000120           5        21           write
+  3,92    0,000075           3        20           close
+  3,45    0,000066           3        18           fstat
+  3,35    0,000064           9         7           mprotect
+  3,14    0,000060           3        17        16 readlink
+  1,67    0,000032           4         8           newfstatat
+  1,52    0,000029           2        10           getuid
+  1,46    0,000028           2        10           geteuid
+  1,36    0,000026           2         9           prctl
+  1,31    0,000025           2         9           getgid
+  1,31    0,000025           2         9           getegid
+  0,99    0,000019           6         3           brk
+  0,89    0,000017          17         1           munmap
+  0,89    0,000017           8         2         2 statfs
+  0,68    0,000013           6         2         2 access
+  0,42    0,000008           4         2           pread64
+  0,31    0,000006           3         2           dup
+  0,26    0,000005           5         1           getrandom
+  0,21    0,000004           4         1           arch_prctl
+  0,21    0,000004           4         1           set_tid_address
+  0,21    0,000004           4         1           set_robust_list
+  0,21    0,000004           4         1           prlimit64
+  0,21    0,000004           4         1           rseq
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,001912           6       276        60 total

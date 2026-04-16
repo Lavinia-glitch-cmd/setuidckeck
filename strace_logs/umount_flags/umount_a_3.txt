@@ -1,0 +1,40 @@
+umount: /run/user/1000: target is busy.
+umount: /snap/snapd/26382: target is busy.
+umount: /sys/fs/cgroup: target is busy.
+umount: /dev/shm: target is busy.
+umount: /: target is busy.
+umount: /run: target is busy.
+umount: /dev: target is busy.
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 19,36    0,000409         409         1           execve
+ 15,43    0,000326          12        27           mmap
+ 11,59    0,000245           8        30        12 openat
+  7,43    0,000157           5        27           read
+  7,24    0,000153          21         7         7 umount2
+  7,05    0,000149           7        21           write
+  6,53    0,000138           4        28        21 statx
+  3,93    0,000083          11         7           mprotect
+  3,55    0,000075           4        18           fstat
+  3,08    0,000065           3        20           close
+  2,13    0,000045           2        17        16 readlink
+  1,47    0,000031           3         8           newfstatat
+  1,28    0,000027           2        10           getuid
+  1,28    0,000027           2        10           geteuid
+  1,18    0,000025           2         9           getegid
+  1,18    0,000025           2         9           prctl
+  1,09    0,000023           2         9           getgid
+  0,95    0,000020          10         2         2 statfs
+  0,90    0,000019          19         1           munmap
+  0,85    0,000018           6         3           brk
+  0,66    0,000014           7         2         2 access
+  0,52    0,000011           5         2           pread64
+  0,28    0,000006           6         1           getrandom
+  0,24    0,000005           5         1           arch_prctl
+  0,24    0,000005           5         1           prlimit64
+  0,19    0,000004           4         1           set_tid_address
+  0,19    0,000004           4         1           set_robust_list
+  0,19    0,000004           4         1           rseq
+  0,00    0,000000           0         2           dup
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,002113           7       276        60 total

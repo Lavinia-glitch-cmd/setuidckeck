@@ -1,0 +1,72 @@
+usage: sudo -h | -K | -k | -V
+usage: sudo -v [-ABkNnS] [-g group] [-h host] [-p prompt] [-u user]
+usage: sudo -l [-ABkNnS] [-g group] [-h host] [-p prompt] [-U user]
+            [-u user] [command [arg ...]]
+usage: sudo [-ABbEHkNnPS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] [VAR=value] [-i | -s] [command [arg ...]]
+usage: sudo -e [-ABkNnS] [-r role] [-t type] [-C num] [-D directory]
+            [-g group] [-h host] [-p prompt] [-R directory] [-T timeout]
+            [-u user] file ...
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 23,81    0,000719           8        83           mmap
+ 11,26    0,000340           4        71        23 openat
+ 10,53    0,000318         318         1           execve
+  7,42    0,000224           3        58           read
+  6,42    0,000194           3        59           close
+  5,30    0,000160           3        53         1 fstat
+  4,74    0,000143           6        23           rt_sigaction
+  3,58    0,000108           5        19           mprotect
+  2,58    0,000078           7        10           write
+  2,55    0,000077           4        17         2 newfstatat
+  2,32    0,000070           3        23           fcntl
+  2,05    0,000062           6        10         8 connect
+  2,05    0,000062           2        21           prlimit64
+  1,66    0,000050           4        12           socket
+  1,46    0,000044           6         7           munmap
+  1,39    0,000042          14         3           sendto
+  0,96    0,000029           3         9           setresuid
+  0,89    0,000027           4         6           recvmsg
+  0,86    0,000026           3         8           lseek
+  0,76    0,000023           2         9         4 ioctl
+  0,63    0,000019           4         4           setgroups
+  0,63    0,000019           1        12         4 prctl
+  0,43    0,000013           2         5           brk
+  0,43    0,000013           4         3         2 readlink
+  0,43    0,000013           2         5           setresgid
+  0,43    0,000013           6         2         2 statfs
+  0,43    0,000013           6         2           getdents64
+  0,36    0,000011           5         2         2 access
+  0,26    0,000008           4         2           getrandom
+  0,23    0,000007           3         2           pread64
+  0,23    0,000007           7         1           pipe2
+  0,20    0,000006           2         3           getpid
+  0,20    0,000006           3         2           geteuid
+  0,20    0,000006           3         2           getgroups
+  0,17    0,000005           2         2           bind
+  0,17    0,000005           5         1           getcwd
+  0,13    0,000004           1         3           getsockname
+  0,13    0,000004           2         2           umask
+  0,13    0,000004           4         1           fstatfs
+  0,13    0,000004           0         5           futex
+  0,13    0,000004           4         1           set_robust_list
+  0,13    0,000004           4         1           rseq
+  0,10    0,000003           1         3           rt_sigprocmask
+  0,10    0,000003           3         1           uname
+  0,10    0,000003           3         1           getuid
+  0,10    0,000003           3         1           getgid
+  0,10    0,000003           3         1           getegid
+  0,10    0,000003           3         1           getppid
+  0,10    0,000003           1         2           getresuid
+  0,10    0,000003           1         2           getresgid
+  0,10    0,000003           3         1           getpgid
+  0,10    0,000003           3         1           getsid
+  0,10    0,000003           3         1           arch_prctl
+  0,10    0,000003           3         1           set_tid_address
+  0,00    0,000000           0         3           poll
+  0,00    0,000000           0         2           recvfrom
+  0,00    0,000000           0         1           setsockopt
+  0,00    0,000000           0         1           sendmmsg
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,003020           5       588        48 total

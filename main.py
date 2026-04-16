@@ -37,11 +37,13 @@ def Generate_Binary(binary_name, flags):
     logs_dir = main_logs_dir / f"{binary_name}_flags"
     logs_dir.mkdir(parents=True, exist_ok=True)
     for flag in flags:
-        output_path=logs_dir / f"{binary_name}_{flag.strip('-')}.txt"
-        if not output_path.exists():
-            cmd=f"sudo timeout 2s strace -c {binary_name} {flag} </dev/null > /dev/null 2> {output_path}"
-            subprocess.run(cmd, shell=True)
+        for i in range(1, 11):
+            output_path=logs_dir / f"{binary_name}_{flag.strip('-')}_{i}.txt"
             
+            if not output_path.exists():
+                cmd=f"sudo timeout 2s strace -c {binary_name} {flag} </dev/null > /dev/null 2> {output_path}"
+                subprocess.run(cmd, shell=True)
+                
             
     syscalls = Get_SysCallTable()
     strace_results={}
@@ -98,8 +100,7 @@ def Get_SUID_binaries():
     
 
 def main():
-    X=GetVectors()
-    print(X.shape)
+   # X=GetVectors()
     training()
     
     

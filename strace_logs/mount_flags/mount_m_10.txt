@@ -1,0 +1,28 @@
+mount: bad usage
+Try 'mount --help' for more information.
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 30,02    0,000145           5        27           mmap
+ 15,94    0,000077           3        21        12 openat
+ 13,87    0,000067           9         7           mprotect
+  7,04    0,000034           3         9           read
+  6,21    0,000030           2        11           close
+  4,97    0,000024           6         4           write
+  4,14    0,000020           2         9           fstat
+  3,52    0,000017          17         1           munmap
+  3,52    0,000017           8         2         2 statfs
+  2,90    0,000014           4         3           brk
+  1,24    0,000006           3         2         2 access
+  1,04    0,000005           5         1           getrandom
+  0,83    0,000004           2         2           dup
+  0,83    0,000004           4         1           arch_prctl
+  0,83    0,000004           4         1           set_tid_address
+  0,83    0,000004           4         1           set_robust_list
+  0,83    0,000004           4         1           prlimit64
+  0,83    0,000004           4         1           rseq
+  0,41    0,000002           2         1           getuid
+  0,21    0,000001           1         1           geteuid
+  0,00    0,000000           0         2           pread64
+  0,00    0,000000           0         1           execve
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,000483           4       109        16 total

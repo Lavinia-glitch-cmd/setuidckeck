@@ -1,0 +1,40 @@
+umount: /run/user/1000: target is busy.
+umount: /snap/snapd/26382: target is busy.
+umount: /sys/fs/cgroup: target is busy.
+umount: /dev/shm: target is busy.
+umount: /: target is busy.
+umount: /run: target is busy.
+umount: /dev: target is busy.
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 19,00    0,000307          11        27           mmap
+ 12,38    0,000200          28         7         7 umount2
+ 11,57    0,000187           6        30        12 openat
+ 10,64    0,000172           6        28        21 statx
+  9,53    0,000154           7        21           write
+  9,10    0,000147           5        27           read
+  4,70    0,000076           3        20           close
+  3,96    0,000064           3        17        16 readlink
+  3,90    0,000063           3        18           fstat
+  2,35    0,000038           4         8           newfstatat
+  1,79    0,000029           2        10           getuid
+  1,79    0,000029           2        10           geteuid
+  1,67    0,000027           3         9           prctl
+  1,61    0,000026           2         9           getegid
+  1,49    0,000024           2         9           getgid
+  1,42    0,000023           3         7           mprotect
+  0,62    0,000010           5         2           pread64
+  0,50    0,000008           4         2           dup
+  0,43    0,000007           2         3           brk
+  0,31    0,000005           5         1           arch_prctl
+  0,31    0,000005           5         1           set_tid_address
+  0,31    0,000005           5         1           set_robust_list
+  0,31    0,000005           5         1           rseq
+  0,19    0,000003           1         2         2 access
+  0,12    0,000002           2         1           getrandom
+  0,00    0,000000           0         1           munmap
+  0,00    0,000000           0         1           execve
+  0,00    0,000000           0         2         2 statfs
+  0,00    0,000000           0         1           prlimit64
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,001616           5       276        60 total

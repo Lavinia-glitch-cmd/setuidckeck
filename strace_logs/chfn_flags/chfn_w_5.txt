@@ -1,0 +1,39 @@
+chfn: option requires an argument -- 'w'
+Usage: chfn [options] [LOGIN]
+
+Options:
+  -f, --full-name FULL_NAME     change user's full name
+  -h, --home-phone HOME_PHONE   change user's home phone number
+  -o, --other OTHER_INFO        change user's other GECOS information
+  -r, --room ROOM_NUMBER        change user's room number
+  -R, --root CHROOT_DIR         directory to chroot into
+  -u, --help                    display this help message and exit
+  -w, --work-phone WORK_PHONE   change user's office phone number
+      --extrausers              Use the extra users database
+
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 25,50    0,000330           9        36           mmap
+ 21,72    0,000281         281         1           execve
+ 18,55    0,000240           6        36        24 openat
+  6,49    0,000084           7        11           write
+  6,11    0,000079           8         9           mprotect
+  5,26    0,000068           5        12           read
+  3,94    0,000051           4        12           close
+  3,48    0,000045           4        11           fstat
+  1,24    0,000016          16         1           munmap
+  1,24    0,000016           5         3           brk
+  1,16    0,000015           7         2         2 statfs
+  0,93    0,000012           6         2         2 access
+  0,93    0,000012           3         4           prctl
+  0,70    0,000009           4         2           pread64
+  0,70    0,000009           9         1           rseq
+  0,39    0,000005           5         1           getrandom
+  0,31    0,000004           4         1           getuid
+  0,31    0,000004           4         1           fstatfs
+  0,31    0,000004           4         1           arch_prctl
+  0,31    0,000004           4         1           prlimit64
+  0,23    0,000003           3         1           set_tid_address
+  0,23    0,000003           3         1           set_robust_list
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,001294           8       150        28 total

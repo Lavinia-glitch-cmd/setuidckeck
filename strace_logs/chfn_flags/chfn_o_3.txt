@@ -1,0 +1,39 @@
+chfn: option requires an argument -- 'o'
+Usage: chfn [options] [LOGIN]
+
+Options:
+  -f, --full-name FULL_NAME     change user's full name
+  -h, --home-phone HOME_PHONE   change user's home phone number
+  -o, --other OTHER_INFO        change user's other GECOS information
+  -r, --room ROOM_NUMBER        change user's room number
+  -R, --root CHROOT_DIR         directory to chroot into
+  -u, --help                    display this help message and exit
+  -w, --work-phone WORK_PHONE   change user's office phone number
+      --extrausers              Use the extra users database
+
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 34,15    0,000361          10        36           mmap
+ 22,89    0,000242           6        36        24 openat
+  8,14    0,000086           7        11           write
+  7,66    0,000081           9         9           mprotect
+  6,81    0,000072           6        12           read
+  5,01    0,000053           4        12           close
+  4,73    0,000050           4        11           fstat
+  1,61    0,000017          17         1           munmap
+  1,51    0,000016           4         4           prctl
+  1,42    0,000015           7         2         2 statfs
+  1,32    0,000014           4         3           brk
+  0,95    0,000010           5         2           pread64
+  0,57    0,000006           3         2         2 access
+  0,47    0,000005           5         1           fstatfs
+  0,47    0,000005           5         1           arch_prctl
+  0,47    0,000005           5         1           getrandom
+  0,38    0,000004           4         1           getuid
+  0,38    0,000004           4         1           set_tid_address
+  0,38    0,000004           4         1           set_robust_list
+  0,38    0,000004           4         1           prlimit64
+  0,28    0,000003           3         1           rseq
+  0,00    0,000000           0         1           execve
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,001057           7       150        28 total

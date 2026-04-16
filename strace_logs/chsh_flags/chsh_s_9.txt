@@ -1,0 +1,34 @@
+chsh: option requires an argument -- 's'
+Usage: chsh [options] [LOGIN]
+
+Options:
+  -h, --help                    display this help message and exit
+  -R, --root CHROOT_DIR         directory to chroot into
+  -s, --shell SHELL             new login shell for the user account
+
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 25,79    0,000312           8        36           mmap
+ 22,07    0,000267         267         1           execve
+ 18,10    0,000219           6        36        24 openat
+  6,36    0,000077           8         9           mprotect
+  5,95    0,000072          12         6           write
+  5,45    0,000066           5        12           read
+  3,88    0,000047           3        12           close
+  3,64    0,000044           4        11           fstat
+  1,32    0,000016          16         1           munmap
+  1,24    0,000015           5         3           brk
+  1,24    0,000015           7         2         2 statfs
+  0,99    0,000012           3         4           prctl
+  0,91    0,000011           5         2         2 access
+  0,66    0,000008           4         2           pread64
+  0,41    0,000005           5         1           fstatfs
+  0,33    0,000004           4         1           getuid
+  0,33    0,000004           4         1           getrandom
+  0,33    0,000004           4         1           rseq
+  0,25    0,000003           3         1           arch_prctl
+  0,25    0,000003           3         1           set_tid_address
+  0,25    0,000003           3         1           set_robust_list
+  0,25    0,000003           3         1           prlimit64
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,001210           8       145        28 total

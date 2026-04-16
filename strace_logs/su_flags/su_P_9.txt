@@ -1,0 +1,70 @@
+strace: Process 96245 detached
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 21,34    0,001883          14       132           mmap
+
+Session terminated, killing shell... 14,62    0,001290          10       118        12 openat
+  9,22    0,000814           6       122           close
+  8,32    0,000734           7       102           read
+  6,30    0,000556           5        95         1 fstat
+  6,11    0,000539         539         1           execve
+  4,25    0,000375          12        30           mprotect
+  3,08    0,000272         272         1           clone
+  2,63    0,000232           6        38           prlimit64
+  2,18    0,000192          13        14           socket
+  2,11    0,000186          23         8           munmap
+  1,88    0,000166          16        10         6 connect
+  1,70    0,000150           9        16           newfstatat
+  1,31    0,000116          14         8           poll
+  1,18    0,000104           5        20        13 ioctl
+  1,12    0,000099          14         7           sendto
+  0,92    0,000081           9         9           recvfrom
+  0,80    0,000071           5        13           lseek
+  0,78    0,000069           7         9         2 recvmsg
+  0,73    0,000064           6        10           statx
+  0,70    0,000062           5        11         4 prctl
+  0,57    0,000050           5        10           fcntl
+  0,54    0,000048           6         8           getsockopt
+  0,53    0,000047          23         2           ppoll
+  0,50    0,000044          44         1           readlink
+  0,50    0,000044          11         4           getdents64
+  0,45    0,000040          13         3           sendmsg
+  0,44    0,000039           5         7           futex
+  0,43    0,000038           9         4           brk
+  0,43    0,000038           6         6           epoll_ctl
+  0,41    0,000036           4         9           rt_sigprocmask
+  0,35    0,000031           5         6           getuid
+  0,35    0,000031           6         5           getrandom
+  0,31    0,000027           9         3         2 access
+  0,27    0,000024          12         2         2 statfs
+  0,26    0,000023           5         4           setsockopt
+  0,24    0,000021           5         4           epoll_pwait2
+  0,23    0,000020           5         4           getpid
+  0,19    0,000017           8         2           write
+  0,15    0,000013          13         1           setgroups
+  0,15    0,000013          13         1           pidfd_open
+  0,10    0,000009           4         2           pread64
+  0,09    0,000008           8         1           bind
+  0,09    0,000008           8         1           timerfd_create
+  0,09    0,000008           8         1           timerfd_settime
+  0,09    0,000008           8         1           epoll_create1
+  0,08    0,000007           7         1           setpriority
+  0,07    0,000006           6         1           chdir
+  0,07    0,000006           6         1           getpriority
+  0,07    0,000006           6         1           signalfd4
+  0,06    0,000005           5         1           getsockname
+  0,06    0,000005           5         1           getpeername
+  0,06    0,000005           5         1           umask
+  0,06    0,000005           5         1           capget
+  0,06    0,000005           5         1           capset
+  0,06    0,000005           5         1           fstatfs
+  0,06    0,000005           5         1           set_tid_address
+  0,06    0,000005           5         1           rseq
+  0,05    0,000004           4         1           rt_sigaction
+  0,05    0,000004           4         1         1 fdatasync
+  0,05    0,000004           4         1           geteuid
+  0,05    0,000004           4         1           arch_prctl
+  0,05    0,000004           4         1           set_robust_list
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,008825           9       883        43 total
+ ...killed.

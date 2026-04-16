@@ -1,0 +1,39 @@
+chfn: option requires an argument -- 'h'
+Usage: chfn [options] [LOGIN]
+
+Options:
+  -f, --full-name FULL_NAME     change user's full name
+  -h, --home-phone HOME_PHONE   change user's home phone number
+  -o, --other OTHER_INFO        change user's other GECOS information
+  -r, --room ROOM_NUMBER        change user's room number
+  -R, --root CHROOT_DIR         directory to chroot into
+  -u, --help                    display this help message and exit
+  -w, --work-phone WORK_PHONE   change user's office phone number
+      --extrausers              Use the extra users database
+
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 38,24    0,000312           8        36           mmap
+ 34,44    0,000281         281         1           execve
+  7,35    0,000060           1        36        24 openat
+  5,27    0,000043           4         9           mprotect
+  3,80    0,000031           2        12           close
+  3,80    0,000031           2        11           fstat
+  3,43    0,000028           2        12           read
+  0,86    0,000007           3         2           pread64
+  0,61    0,000005           2         2         2 access
+  0,49    0,000004           1         3           brk
+  0,49    0,000004           4         1           arch_prctl
+  0,49    0,000004           4         1           set_robust_list
+  0,37    0,000003           3         1           set_tid_address
+  0,37    0,000003           3         1           rseq
+  0,00    0,000000           0        11           write
+  0,00    0,000000           0         1           munmap
+  0,00    0,000000           0         1           getuid
+  0,00    0,000000           0         2         2 statfs
+  0,00    0,000000           0         1           fstatfs
+  0,00    0,000000           0         4           prctl
+  0,00    0,000000           0         1           prlimit64
+  0,00    0,000000           0         1           getrandom
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,000816           5       150        28 total

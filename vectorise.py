@@ -15,6 +15,7 @@ def GetMatrices(strace_results, syscalls_dict):
         syscall_no=entry[0][0]
         syscalls.append((syscall_no, syscall_name))
     syscalls.sort()
+    
     for file_name, file_data in strace_results.items():
         
         file_matrix = np.zeros((len(syscalls), 6))
@@ -30,9 +31,6 @@ def GetMatrices(strace_results, syscalls_dict):
                     except:
                         file_matrix[i, col_idx] = 0.0
         matrices[file_name] = file_matrix
-        
-        #for better visualising data
-        print("matricea pentru %s" % file_name )
-        print(file_matrix)
+      
         
     return matrices

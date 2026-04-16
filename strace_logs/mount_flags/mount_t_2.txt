@@ -1,0 +1,28 @@
+mount: option requires an argument -- 't'
+Try 'mount --help' for more information.
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 28,21    0,000134           4        33        24 openat
+ 21,05    0,000100           3        27           mmap
+ 12,00    0,000057           8         7           mprotect
+  8,21    0,000039          19         2           write
+  5,26    0,000025           2         9           read
+  4,63    0,000022           2        11           close
+  3,37    0,000016          16         1           munmap
+  3,16    0,000015           5         3           brk
+  3,16    0,000015           7         2         2 statfs
+  2,11    0,000010           1         9           fstat
+  1,47    0,000007           7         1           rseq
+  1,26    0,000006           3         2           dup
+  1,05    0,000005           2         2         2 access
+  0,84    0,000004           4         1           getuid
+  0,84    0,000004           4         1           set_tid_address
+  0,84    0,000004           4         1           getrandom
+  0,63    0,000003           3         1           geteuid
+  0,63    0,000003           3         1           arch_prctl
+  0,63    0,000003           3         1           set_robust_list
+  0,63    0,000003           3         1           prlimit64
+  0,00    0,000000           0         2           pread64
+  0,00    0,000000           0         1           execve
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,000475           3       119        28 total

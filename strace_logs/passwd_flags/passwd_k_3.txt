@@ -1,0 +1,43 @@
+Current password: passwd: Authentication token manipulation error
+passwd: password unchanged
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 25,04    0,000333          16        20           munmap
+ 24,29    0,000323           2       114           mmap
+ 15,26    0,000203           2        84        27 openat
+  6,17    0,000082           1        61           close
+  5,86    0,000078           1        69           read
+  5,86    0,000078           3        26           mprotect
+  4,89    0,000065           1        59         1 fstat
+  2,86    0,000038           9         4           write
+  1,58    0,000021           2        10         4 prctl
+  1,28    0,000017           3         5           socket
+  1,28    0,000017           3         5           fcntl
+  1,13    0,000015           3         4         3 connect
+  0,98    0,000013           4         3           futex
+  0,68    0,000009           0        10           newfstatat
+  0,60    0,000008           4         2           rt_sigprocmask
+  0,53    0,000007           1         5         5 ioctl
+  0,53    0,000007           3         2           sendto
+  0,38    0,000005           2         2           getpid
+  0,38    0,000005           5         1           readlink
+  0,15    0,000002           2         1           poll
+  0,15    0,000002           0         8           lseek
+  0,15    0,000002           1         2           recvfrom
+  0,00    0,000000           0         3           brk
+  0,00    0,000000           0         8           rt_sigaction
+  0,00    0,000000           0         2           pread64
+  0,00    0,000000           0         2         2 access
+  0,00    0,000000           0         1           execve
+  0,00    0,000000           0         1           umask
+  0,00    0,000000           0         3           getuid
+  0,00    0,000000           0         2         2 statfs
+  0,00    0,000000           0         1           fstatfs
+  0,00    0,000000           0         1           arch_prctl
+  0,00    0,000000           0         1           set_tid_address
+  0,00    0,000000           0         1           set_robust_list
+  0,00    0,000000           0         9         1 prlimit64
+  0,00    0,000000           0         1           getrandom
+  0,00    0,000000           0         1           rseq
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,001330           2       534        45 total

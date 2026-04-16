@@ -1,0 +1,28 @@
+umount: option requires an argument -- 't'
+Try 'umount --help' for more information.
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 31,86    0,000259           9        27           mmap
+ 24,72    0,000201           6        33        24 openat
+  8,61    0,000070          10         7           mprotect
+  7,26    0,000059           6         9           read
+  5,54    0,000045           4        11           close
+  4,80    0,000039          19         2           write
+  3,44    0,000028           3         9           fstat
+  2,46    0,000020          20         1           munmap
+  2,34    0,000019           9         2         2 statfs
+  1,72    0,000014           4         3           brk
+  1,11    0,000009           4         2           pread64
+  0,98    0,000008           4         2           dup
+  0,86    0,000007           3         2         2 access
+  0,62    0,000005           5         1           getuid
+  0,62    0,000005           5         1           prlimit64
+  0,62    0,000005           5         1           getrandom
+  0,49    0,000004           4         1           geteuid
+  0,49    0,000004           4         1           arch_prctl
+  0,49    0,000004           4         1           set_tid_address
+  0,49    0,000004           4         1           set_robust_list
+  0,49    0,000004           4         1           rseq
+  0,00    0,000000           0         1           execve
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,000813           6       119        28 total

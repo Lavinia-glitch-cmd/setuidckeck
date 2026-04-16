@@ -1,0 +1,43 @@
+Current password: passwd: Authentication token manipulation error
+passwd: password unchanged
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 30,36    0,001116           9       114           mmap
+ 15,83    0,000582           6        84        27 openat
+  9,60    0,000353          17        20           munmap
+  9,14    0,000336           4        69           read
+  7,56    0,000278           4        61           close
+  6,58    0,000242           4        59         1 fstat
+  6,39    0,000235           9        26           mprotect
+  1,66    0,000061           6        10           newfstatat
+  1,36    0,000050          12         4           write
+  1,31    0,000048           9         5           socket
+  1,25    0,000046          11         4         3 connect
+  0,92    0,000034           3         9         1 prlimit64
+  0,90    0,000033           3        10         4 prctl
+  0,82    0,000030           3         8           rt_sigaction
+  0,73    0,000027           3         8           lseek
+  0,60    0,000022          11         2           sendto
+  0,57    0,000021           4         5         5 ioctl
+  0,54    0,000020          20         1           readlink
+  0,44    0,000016           3         5           fcntl
+  0,44    0,000016           8         2         2 statfs
+  0,35    0,000013           4         3           brk
+  0,35    0,000013           4         3           futex
+  0,30    0,000011           3         3           getuid
+  0,27    0,000010           5         2           recvfrom
+  0,22    0,000008           4         2           pread64
+  0,19    0,000007           3         2           rt_sigprocmask
+  0,16    0,000006           6         1           poll
+  0,16    0,000006           3         2         2 access
+  0,16    0,000006           3         2           getpid
+  0,16    0,000006           6         1           set_tid_address
+  0,14    0,000005           5         1           fstatfs
+  0,14    0,000005           5         1           getrandom
+  0,11    0,000004           4         1           arch_prctl
+  0,11    0,000004           4         1           rseq
+  0,08    0,000003           3         1           umask
+  0,08    0,000003           3         1           set_robust_list
+  0,00    0,000000           0         1           execve
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,003676           6       534        45 total

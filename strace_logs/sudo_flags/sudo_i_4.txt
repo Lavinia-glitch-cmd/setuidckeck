@@ -1,0 +1,86 @@
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 14,45    0,001140           7       155           mmap
+ 14,29    0,001128           5       222        43 openat
+ 10,52    0,000830           3       212           close
+  8,92    0,000704           4       166         1 read
+  6,49    0,000512           3       158         1 fstat
+  3,12    0,000246           9        26           munmap
+  2,85    0,000225           6        35           mprotect
+  2,75    0,000217           4        48         2 newfstatat
+  2,72    0,000215         215         1           clone
+  2,51    0,000198           3        61           fcntl
+  2,47    0,000195           3        59           rt_sigaction
+  2,38    0,000188           7        25           socket
+  2,31    0,000182           3        59           prlimit64
+  2,15    0,000170          10        17        11 connect
+  1,99    0,000157          10        15           sendto
+  1,51    0,000119           2        40         2 lseek
+  1,23    0,000097           4        24         7 ioctl
+  1,13    0,000089           4        18           recvfrom
+  1,12    0,000088           5        15         2 recvmsg
+  0,82    0,000065           3        20           pread64
+  0,79    0,000062           3        20           statx
+  0,68    0,000054           4        11           futex
+  0,67    0,000053           6         8           brk
+  0,66    0,000052           5         9           poll
+  0,65    0,000051           6         8           getdents64
+  0,63    0,000050          10         5           ppoll
+  0,62    0,000049           4        12           epoll_ctl
+  0,60    0,000047           9         5         2 readlink
+  0,54    0,000043           3        12           alarm
+  0,53    0,000042           4        10           setresuid
+  0,49    0,000039           4         8         7 access
+  0,47    0,000037          12         3           write
+  0,42    0,000033           2        14         4 prctl
+  0,39    0,000031          31         1           sendmmsg
+  0,38    0,000030           3         9           getpid
+  0,37    0,000029           3         9           rt_sigprocmask
+  0,35    0,000028           3         8           getrandom
+  0,34    0,000027           5         5           setgroups
+  0,30    0,000024           3         8           epoll_pwait2
+  0,29    0,000023           2         8           getsockopt
+  0,28    0,000022           3         6           setresgid
+  0,25    0,000020           6         3           sendmsg
+  0,24    0,000019           2         7           getuid
+  0,23    0,000018           3         5           setsockopt
+  0,23    0,000018           9         2           epoll_create1
+  0,23    0,000018           9         2           pipe2
+  0,22    0,000017           5         3           bind
+  0,20    0,000016           4         4           getsockname
+  0,18    0,000014           3         4           umask
+  0,14    0,000011           5         2           timerfd_create
+  0,13    0,000010           5         2           dup2
+  0,13    0,000010          10         1           setpriority
+  0,11    0,000009           4         2           getresuid
+  0,11    0,000009           4         2           timerfd_settime
+  0,10    0,000008           4         2           getcwd
+  0,10    0,000008           8         1           chown
+  0,10    0,000008           4         2           getgroups
+  0,09    0,000007           2         3           dup
+  0,09    0,000007           7         1           socketpair
+  0,09    0,000007           3         2           geteuid
+  0,08    0,000006           3         2           getresgid
+  0,08    0,000006           3         2           capget
+  0,08    0,000006           6         1           pidfd_open
+  0,06    0,000005           5         1           rt_sigreturn
+  0,06    0,000005           5         1           setgid
+  0,05    0,000004           4         1           getpeername
+  0,05    0,000004           4         1           uname
+  0,05    0,000004           4         1           getgid
+  0,05    0,000004           4         1           getegid
+  0,05    0,000004           4         1           getppid
+  0,05    0,000004           4         1           getpgid
+  0,05    0,000004           4         1           getsid
+  0,05    0,000004           4         1           capset
+  0,05    0,000004           4         1           getpriority
+  0,04    0,000003           3         1           getpgrp
+  0,00    0,000000           0         1           execve
+  0,00    0,000000           0         2         2 statfs
+  0,00    0,000000           0         1           fstatfs
+  0,00    0,000000           0         1           arch_prctl
+  0,00    0,000000           0         1           set_tid_address
+  0,00    0,000000           0         1           set_robust_list
+  0,00    0,000000           0         1           rseq
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,007892           4      1630        84 total

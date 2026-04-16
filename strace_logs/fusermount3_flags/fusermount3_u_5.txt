@@ -1,0 +1,23 @@
+fusermount3: missing mountpoint argument
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 24,41    0,000031          31         1           write
+ 21,26    0,000027           9         3           mprotect
+ 12,60    0,000016          16         1           munmap
+  8,66    0,000011           5         2           close
+  8,66    0,000011           1         8           mmap
+  7,09    0,000009           3         3           brk
+  3,15    0,000004           4         1           arch_prctl
+  3,15    0,000004           4         1           set_tid_address
+  3,15    0,000004           4         1           prlimit64
+  3,15    0,000004           4         1           getrandom
+  2,36    0,000003           3         1           set_robust_list
+  2,36    0,000003           3         1           rseq
+  0,00    0,000000           0         1           read
+  0,00    0,000000           0         2           fstat
+  0,00    0,000000           0         2           pread64
+  0,00    0,000000           0         1         1 access
+  0,00    0,000000           0         1           execve
+  0,00    0,000000           0         2           openat
+------ ----------- ----------- --------- --------- ----------------
+100,00    0,000127           3        33         1 total
