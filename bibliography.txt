@@ -1,0 +1,3 @@
+https://www.elastic.co/guide/en/security/8.19/privilege-escalation-via-suid-sgid.html
+
+https://vickieli.dev/system%20security/suid-privesc/
