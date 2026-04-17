@@ -16,6 +16,12 @@ def training():
     X_scaled=scaler.fit_transform(X)
     
     clf=IsolationForest(contamination='auto').fit(X_scaled)
-    np.set_printoptions(threshold=np.inf)
-    print(clf.predict(X_scaled))
+
+    joblib.dump(scaler, "scaler.pkl")
+    type=[('float_input', FloatTensorType([None, X.shape[1]]))]
+    onx = convert_sklearn(clf, initial_types=initial_type)
     
+    with open("isolation_forest.onnx", "wb") as f:
+        f.write(onx.SerializeToString())
+        
+        
