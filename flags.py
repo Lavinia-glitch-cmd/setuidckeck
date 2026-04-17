@@ -24,10 +24,26 @@ def Get_BinaryFlags(binary):
         print(f"Eroare neașteptată la extragerea flag-urilor: {e}")
         return []
         
-        
+def GenerateVectorForDetection(file_path, syscalls):
+    """Generate vector forl only one file"""
+    
+    parsed_data=GetStraceDictionary(file_path)
+    for syscall_name in list(parsed.data.keys()):
+        if syscall_name in syscalls.dict:
+            syscall_no = syscalls.dict[syscall_name][0][0]
+            parsed_data[syscall_name][0]["syscall_no"]=syscall_no
+    res={file_path.name:parsed_data}
+    from vectorise import GetMatrices, Vectorise
+    matrices=GetMatrices(res, syscalls)
+    vector=Vectorise(matrices)
+    return vector
 
 
-def Generate_Binary(binary_name, flags):
+def Generate_Binary(binary_name, flags=None, log=None):
+    if log:
+        _path=Path(log)
+        return GenerateVectorForDetection(_path, syscalls)
+
     base_path = Path(__file__).resolve().parent
     main_logs_dir=base_path/"strace_logs"
     logs_dir = main_logs_dir / f"{binary_name}_flags"

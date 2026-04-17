@@ -11,7 +11,7 @@ def Vectorise(matrices):
         vector.append(line.flatten())
     return np.array(vector)
 
-def GetVectors():
+def GetVectors(file=None):
     
     SUID_binaries=Get_SUID_binaries()
     all_vectors=[]
