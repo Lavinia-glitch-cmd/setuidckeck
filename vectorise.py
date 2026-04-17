@@ -1,11 +1,33 @@
 import numpy as np
 import pandas as pd
+from pathlib import Path
+import subprocess
+from flags import Get_SUID_binaries, Generate_Binary 
+
 def Vectorise(matrices):
     vector=[]
     for name, mat in matrices.items():
         line=mat[:, 1:]
         vector.append(line.flatten())
     return np.array(vector)
+
+def GetVectors():
+    
+    SUID_binaries=Get_SUID_binaries()
+    all_vectors=[]
+    for binary_path, flags in SUID_binaries:
+        bin_path = Path(binary_path)
+        binary_name = bin_path.name
+        try:
+            vector=Generate_Binary(binary_name, flags)
+            if vector is not None:
+                all_vectors.append(vector)
+            
+        except Exception as e:
+            print(f"Error found for {binary_name}: {e}")
+    
+    X=np.vstack(all_vectors)
+    return X
 
 def GetMatrices(strace_results, syscalls_dict):
     matrices={}

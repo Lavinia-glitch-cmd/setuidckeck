@@ -13,7 +13,10 @@ def Get_SysCallTable():
                 try:
                     syscall_number=int(line[0])
                     syscall_name=line[2]
-                    entry_point=line[3] if len(line) > 3 else "N/A"
+                    if len(line)>3:
+                        entry_point=line[3] 
+                    else:
+                        entry_point="N/A"
                     SysCallTable[syscall_name]=[syscall_number, entry_point]
                     
                 except ValueError: 
