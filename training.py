@@ -17,7 +17,7 @@ def training():
     scaler=StandardScaler()
     X_scaled=scaler.fit_transform(X)
     
-    clf=IsolationForest(contamination='auto', random_state=42).fit(X_scaled)
+    clf=IsolationForest(contamination=0.01, random_state=42).fit(X_scaled)
     import sys 
     np.set_printoptions(threshold=sys.maxsize)
     print(clf.predict(X_scaled))

@@ -14,20 +14,21 @@ def Vectorise(matrices):
 def GetVectors(file=None):
     
     SUID_binaries=Get_SUID_binaries()
-    all_vectors=[]
+    all_vectors={}
     for binary_path, flags in SUID_binaries:
         bin_path = Path(binary_path)
         binary_name = bin_path.name
         try:
             vector=Generate_Binary(binary_name, flags)
             if vector is not None:
-                all_vectors.append(vector)
+            
+                all_vectors[binary_name]=vector
             
         except Exception as e:
             print(f"Error found for {binary_name}: {e}")
     
-    X=np.vstack(all_vectors)
-    return X
+    
+    return all_vectors
 
 def GetMatrices(strace_results, syscalls_dict):
     matrices={}
