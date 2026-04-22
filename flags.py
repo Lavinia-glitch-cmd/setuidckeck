@@ -115,6 +115,38 @@ def GenerateVectorForDetection(file_path, syscalls):
 
             
 
+def GenerateBinary(binary_name, binary_path, flags=None,  log=None):
+    syscalls=Get_SysCallTable()
+    strace_results={}
+
+    if log:
+        path=Path(log)
+        return GenerateVectorForDetection(log, syscalls)
+    
+    base_path=Path(__file__).resolve().parent
+
+    logs_dir=base_path / "strace_logs" / binary_name
+
+    input_dir=logs_dir / "input_binaries"
+    input_dir.mkdir(exist_ok=True, parents=True)
+
+    output_dir=logs_dir / "strace_logs" / "output_dir"
+    output_dir.mkdir(exist_ok=True, parents=True)
+
+
+    input_file=input_dir/ f"input_{binary_name}.txt"
+    with open(input_file, 'r') as f:
+        for argument in f.readlines():
+            argument=argument.strip()
+            for flag in flags:
+                output_file = output_dir / f"{binary_name}_{flag}_{argument}.txt"
+                cmd = ["sudo", "strace", "-c", binary_path, flag, argument]
+            try:
+                with open(output_file, "w") as out_f:
+                    subprocess.run(cmd, stderr=out_f, stdin=subprocess.DEVNULL, check=True)
+            except Exception as e:
+                print(f"eroare: {e}")
+            
 
 
 
