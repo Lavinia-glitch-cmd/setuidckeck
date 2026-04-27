@@ -19,9 +19,12 @@ def GetVectors(file=None):
         bin_path = Path(binary_path)
         binary_name = bin_path.name
         try:
-            vector=Generate_Binary(binary_name, flags)
-            if vector is not None:
+            vector=Generate_Binary(binary_name, binary_path, flags)
             
+            if vector is not None:
+                #print("vector for %s" % binary_name)
+                #np.set_printoptions(threshold=np.inf)
+                #print(vector)
                 all_vectors[binary_name]=vector
             
         except Exception as e:

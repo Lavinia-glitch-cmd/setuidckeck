@@ -39,83 +39,16 @@ def GenerateVectorForDetection(file_path, syscalls):
     vector=Vectorise(matrices)
     return vector
 
-   
+def get_vector(file, syscalls):
+    parsed_data=GetStraceDictionary(file)
+    if parsed_data:
+        for syscall_name in list(parsed_data.keys()):
+            if syscall_name in syscalls.dict:
+                sys_id= syscalls.dict[syscall_name][0][0]
+                parsed_data[syscall_name][0]["syscall_no"]=sys_id
+    return parsed_data
         
-# def Generate_Binary(binary_name,binary_path=None, flags=None, log=None):
-#     strace_results={}
-#     syscalls = Get_SysCallTable()
-#     if log:
-#         _path=Path(log)
-#         return GenerateVectorForDetection(_path, syscalls)
-        
-        
-#     base_path=Path(__file__).resolve().parent
-#     logs_dir=base_path /"strace_logs" / f"{binary_name}_flags_fuzzer"
-#     input_dir=base_path / "strace_logs" / "inputs" / f"in_{binary_name}_flags"
-#     output_dir=base_path/ "strace_logs" / "outputs" / f"out_{binary_name}_flags"
-
-#     input_dir.mkdir(parents=True, exist_ok=True)
-#     logs_dir.mkdir(parents=True, exist_ok=True)
-    
-#     output_dir.parent.mkdir(parents=True, exist_ok=True)
-    
-#     for d in [input_dir, output_dir, logs_dir]:
-#         if d.exists():
-#             shutil.rmtree(d)
-#         d.mkdir(parents=True, exist_ok=True)
-    
-#     if not any(input_dir.iterdir()):
-#         if flags and len(flags)>0:
-#             for index, flag in enumerate(flags):
-#                 seed_file=input_dir / f"seed_{index}.txt"
-#                 with open(seed_file, "w") as f:
-                   
-#                     f.write(flag)
-#         else:
-#             with open(input_dir / "seed.txt", "w") as f:
-#                 f.write("-h")
-        
-#     dict_file = base_path / "dicts" / f"{binary_name}.dict"
-#     dict_cmd = f"-x {dict_file}" if dict_file.exists() else ""    
-#     fuzzer_cmd= f"timeout 60s afl-fuzz -Q {dict_cmd} -i {input_dir} -o {output_dir} -- {binary_path} @@"
-#     subprocess.run(fuzzer_cmd, shell=True)
-    
-#     queue_dir=output_dir / "default" / "queue"
-#     if queue_dir.exists():
-#         seeds=sorted([ s for s in queue_dir.iterdir() if s.is_file() ])
-#         for i, seed in enumerate(seeds):
-#             output_path=logs_dir/f"{binary_name}_fuzz_{i}.txt"
-#             if not output_path.exists():
-#                 with open(seed, errors='ignore') as f:
-#                     content= f.read(100).strip()
-                    
-#                 binary_name=binary_path.name
-#                 cmd=f"timeout 2s strace -c {binary_name} {content} </dev/null 2> {output_path}"
-#                 subprocess.run(cmd, shell=True)
-                
-#                 parsed_data=GetStraceDictionary(output_path)
-                    
-#                 if parsed_data:
-#                     for syscall_name in list(parsed_data.keys()):
-#                         if syscall_name in syscalls.dict:
-#                             s_id = syscalls.dict[syscall_name][0][0]
-#                             parsed_data[syscall_name][0]["syscall_no"] = s_id
-                
-                
-#                     strace_results[output_path.name] = parsed_data
-                
-#     if not strace_results:
-#         print(f"[!] Atenție: Nu s-au generat date strace pentru {binary_name}")
-#         return None       
-#     from vectorise import GetMatrices, Vectorise
-#     matrices=GetMatrices(strace_results, syscalls)
-#     vector=Vectorise(matrices)
-#     return vector
-
-
-            
-
-def GenerateBinary(binary_name, binary_path, flags=None,  log=None):
+def Generate_Binary(binary_name, binary_path, flags=None,  log=None):
     syscalls=Get_SysCallTable()
     strace_results={}
 
@@ -126,30 +59,49 @@ def GenerateBinary(binary_name, binary_path, flags=None,  log=None):
     base_path=Path(__file__).resolve().parent
 
     logs_dir=base_path / "strace_logs" / binary_name
+    logs_dir.mkdir(exist_ok=True, parents=True)
 
     input_dir=logs_dir / "input_binaries"
     input_dir.mkdir(exist_ok=True, parents=True)
 
     output_dir=logs_dir / "strace_logs" / "output_dir"
     output_dir.mkdir(exist_ok=True, parents=True)
-
-
-    input_file=input_dir/ f"input_{binary_name}.txt"
-    with open(input_file, 'r') as f:
-        for argument in f.readlines():
-            argument=argument.strip()
-            for flag in flags:
-                output_file = output_dir / f"{binary_name}_{flag}_{argument}.txt"
-                cmd = ["sudo", "strace", "-c", binary_path, flag, argument]
+    
+    for flag in flags:
+        input_file=input_dir/"flag_{flag}.txt"
+        with open(input_file, 'r') as f_in:
+            for argument in f_in.readlines():
+                output_file=output_dir/f"{binary_name}_{flag}_{argument}.txt"
+                cmd=["sudo", "strace", "-c", binary_path, flag, argument]
             try:
-                with open(output_file, "w") as out_f:
-                    subprocess.run(cmd, stderr=out_f, stdin=subprocess.DEVNULL, check=True)
+                with open(output_file, 'w') as f_out:
+                    subprocess.run(cmd, stderr=f_out, stdin.subprocess.DEVNULL, check=True)
+                    strace_results[f_out] = get_vector(f_out, syscalls)
+    #with open(input_file, 'r') as f:
+        #for argument in f.readlines():
+         #   argument=argument.strip()
+          #  for flag in flags:
+           #     input_file_flag=input_to_flag_file/"flag_{f}"
+            #    output_file = output_dir / f"{binary_name}_{flag}_{argument}.txt"
+             
+             #for argument in 
+              #  cmd = ["sudo", "strace", "-c", binary_path, flag, argument]
+           # try:
+            #    with open(output_file, "w") as out_f:
+             #       subprocess.run(cmd, stderr=out_f, stdin=subprocess.DEVNULL, #check=True)
+                    
+                   # strace_results[out_f] = get_vector(out_f, syscalls)
+                    
             except Exception as e:
                 print(f"eroare: {e}")
-            
-
-
-
+                
+    if not strace_results:
+         return None       
+    from vectorise import GetMatrices, Vectorise
+    matrices=GetMatrices(strace_results, syscalls)
+    vector=Vectorise(matrices)
+    return vector
+     
 def Get_SUID_binaries():
     
     cmd= "find /bin /usr/bin /sbin -type f -perm /4000 2>/dev/null"
@@ -158,11 +110,10 @@ def Get_SUID_binaries():
     paths= [b for b in result.stdout.split('\n') if b]
     binaries=[]
     
-    
     for path in paths:
         print(path)
         binary_name=Path(path).name
         flags=Get_BinaryFlags(binary_name)
         binaries.append((path, flags))
     return binaries
-        
+ 
