@@ -5,8 +5,6 @@ from parser import Get_SysCallTable
 from strace import GetStraceDictionary
 import shutil
 
-
-
 def Get_BinaryFlags(binary):
     try :
         cmd = f"man {binary} | col -b"
@@ -69,31 +67,28 @@ def Generate_Binary(binary_name, binary_path, flags=None,  log=None):
     
     for flag in flags:
         input_file=input_dir/"flag_{flag}.txt"
-        with open(input_file, 'r') as f_in:
-            for argument in f_in.readlines():
-                output_file=output_dir/f"{binary_name}_{flag}_{argument}.txt"
-                cmd=["sudo", "strace", "-c", binary_path, flag, argument]
+        if input_file is not None:
+            with open(input_file, 'r') as f_in:
+                for argument in f_in.readlines():
+                    output_file=output_dir/f"{binary_name}_{flag}_{argument}.txt"
+                    cmd=["sudo", "strace", "-c", binary_path, flag, argument]
+                try:
+                    with open(output_file, 'w') as f_out:
+                        subprocess.run(cmd, stderr=f_out, stdin.subprocess.DEVNULL, check=True)
+                        strace_results[f_out] = get_vector(f_out, syscalls)   
+                except Exception as e:
+                    print(f"eroare: {e}")
+                    
+        else 
+            output_file=output_dir/f"{binary_name}_{flag}.txt"
+                cmd=["sudo", "strace", "-c", binary_path, flag]
             try:
                 with open(output_file, 'w') as f_out:
                     subprocess.run(cmd, stderr=f_out, stdin.subprocess.DEVNULL, check=True)
-                    strace_results[f_out] = get_vector(f_out, syscalls)
-    #with open(input_file, 'r') as f:
-        #for argument in f.readlines():
-         #   argument=argument.strip()
-          #  for flag in flags:
-           #     input_file_flag=input_to_flag_file/"flag_{f}"
-            #    output_file = output_dir / f"{binary_name}_{flag}_{argument}.txt"
-             
-             #for argument in 
-              #  cmd = ["sudo", "strace", "-c", binary_path, flag, argument]
-           # try:
-            #    with open(output_file, "w") as out_f:
-             #       subprocess.run(cmd, stderr=out_f, stdin=subprocess.DEVNULL, #check=True)
-                    
-                   # strace_results[out_f] = get_vector(out_f, syscalls)
-                    
+                    strace_results[f_out] = get_vector(f_out, syscalls)   
             except Exception as e:
                 print(f"eroare: {e}")
+            
                 
     if not strace_results:
          return None       
@@ -103,7 +98,6 @@ def Generate_Binary(binary_name, binary_path, flags=None,  log=None):
     return vector
      
 def Get_SUID_binaries():
-    
     cmd= "find /bin /usr/bin /sbin -type f -perm /4000 2>/dev/null"
     
     result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
